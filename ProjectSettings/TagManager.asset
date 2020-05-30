@@ -41,3 +41,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Obstacle
+    uniqueID: 499911237
+    locked: 0
+  - name: Background
+    uniqueID: 4035176217
+    locked: 0
+  - name: Middleground
+    uniqueID: 1557449271
+    locked: 0
+  - name: Agent
+    uniqueID: 3032555785
+    locked: 0
+  - name: Foreground
+    uniqueID: 1311139177
+    locked: 0
