@@ -42,17 +42,17 @@ TagManager:
     uniqueID: 0
     locked: 0
   - name: Obstacle
-    uniqueID: 499911237
+    uniqueID: 4079744095
     locked: 0
   - name: Background
-    uniqueID: 4035176217
+    uniqueID: 4053741469
     locked: 0
   - name: Middleground
-    uniqueID: 1557449271
+    uniqueID: 1039863839
     locked: 0
   - name: Agent
-    uniqueID: 3032555785
+    uniqueID: 2627561071
     locked: 0
   - name: Foreground
-    uniqueID: 1311139177
+    uniqueID: 3382947007
     locked: 0
