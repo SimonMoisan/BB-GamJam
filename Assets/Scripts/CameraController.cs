@@ -8,12 +8,9 @@ public class CameraController : MonoBehaviour
     [SerializeField] public float scrollSpeed = 2f;
     [SerializeField] public float minX = -80f;
     [SerializeField] public float maxX = 40f;
-    [SerializeField] public float minZ = 0f;
-    [SerializeField] public float maxZ = 80f;
+    [SerializeField] public float minY = 0f;
+    [SerializeField] public float maxY = 80f;
 
-    [Header("Zoom configuration")]
-    [SerializeField] public float minZoom = 10f;
-    [SerializeField] public float maxZoom = 80f;
 
     private bool doMovement = true;
 
@@ -32,14 +29,14 @@ public class CameraController : MonoBehaviour
 
         if (doMovement)
         {
-            if ((Input.GetKey("z") || Input.mousePosition.y >= Screen.height - panBoarderThickness) && transform.position.z < maxZ)
+            if ((Input.GetKey("z") || Input.mousePosition.y >= Screen.height - panBoarderThickness) && transform.position.y < maxY)
             {
-                transform.Translate(Vector3.forward * panSpeed * Time.deltaTime, Space.World);
+                transform.Translate(Vector3.up * panSpeed * Time.deltaTime, Space.World);
             }
 
-            if ((Input.GetKey("s") || Input.mousePosition.y <= panBoarderThickness) && transform.position.z >= minZ)
+            if ((Input.GetKey("s") || Input.mousePosition.y <= panBoarderThickness) && transform.position.y >= minY)
             {
-                transform.Translate(Vector3.back * panSpeed * Time.deltaTime, Space.World);
+                transform.Translate(Vector3.down * panSpeed * Time.deltaTime, Space.World);
             }
 
             if ((Input.GetKey("q") || Input.mousePosition.x <= panBoarderThickness) && transform.position.x >= minX)
@@ -56,8 +53,6 @@ public class CameraController : MonoBehaviour
         float scroll = Input.GetAxis("Mouse ScrollWheel");
 
         Vector3 pos = transform.position;
-        pos.y -= scroll * scrollSpeed * Time.deltaTime * 1000;
-        pos.y = Mathf.Clamp(pos.y, minZoom, maxZoom);
         transform.position = pos;
     }
 }
