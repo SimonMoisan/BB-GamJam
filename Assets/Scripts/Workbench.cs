@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum WorkbenchType{ }
+public enum WorkbenchType{ DeepFryer, CuttingTable, SeasonTable, FryPan}
 public class Workbench : MonoBehaviour
 {
     public int numberInputSlots;
@@ -11,6 +11,4 @@ public class Workbench : MonoBehaviour
     [Header("Associated Object")]
     public Ingredient[] ingredientInputSlots;
     public Ingredient ingredientOutput;
-
-
 }

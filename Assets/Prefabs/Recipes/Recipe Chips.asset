@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a3f4a79cafd8a243871cc20593bcb3e, type: 3}
+  m_Name: Recipe Chips
+  m_EditorClassIdentifier: 
+  recipeSteps:
+  - {fileID: 0}
+  - {fileID: 0}
+  ingredients:
+  - {fileID: 5335293448787007292, guid: a9ea6a9bdd79e5a41bc0f07a93757839, type: 3}
