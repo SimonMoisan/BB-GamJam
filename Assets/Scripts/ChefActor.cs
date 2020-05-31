@@ -16,6 +16,16 @@ public class ChefActor : Actor
         gameManager = FindObjectOfType<GameManager>();
     }
 
+    public void SetWorking(bool working)
+    {
+        anim.SetBool("Working", working);
+    }
+
+    public void SetHolding(bool holding)
+    {
+        anim.SetBool("Holding", holding);
+    }
+
     private void OnMouseDown()
     {
         gameManager.actorSelecter = this;

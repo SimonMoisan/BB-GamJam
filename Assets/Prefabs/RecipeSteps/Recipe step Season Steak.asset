@@ -17,5 +17,5 @@ MonoBehaviour:
   wrongIngrdientOutput: []
   ingredientOutput: {fileID: 816797817335187251, guid: 0108c82716cf2dc45a35a8bb2c7ce888,
     type: 3}
-  duration: 20
+  duration: 5
   workbenchUsed: 2

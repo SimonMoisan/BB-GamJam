@@ -66,7 +66,7 @@ public class WaiterActor : Actor
         processingPath = true;
         index = 0;
         StartCoroutine("Appear");
-        pathChoosen = (Random.Range(0, 1) == 0) ? pathA : pathB;
+        pathChoosen = (Random.Range(0, 2) == 0) ? pathA : pathB;
         Vector3 target = pathChoosen.transform.GetChild(index).position;
         MoveToTarget(target);
     }

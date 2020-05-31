@@ -28,14 +28,16 @@ public class ChefBehavior : AgentBehavior
                 workingDuration = currentStep.duration;
                 workingTimer = workingDuration;
                 actor.chefState = ChefState.Working;
+                actor.SetWorking(true);
             }
         }
 
         //Work on a furniture
-        if(actor.chefState == ChefState.Working)
+        else if(actor.chefState == ChefState.Working)
         {
             if(workingTimer <= 0) //Finish work and go to next step
             {
+                actor.SetWorking(false);
                 actor.chefState = ChefState.Idle;
                 furnitureToInteractWith.isUsed = false;
 
@@ -43,6 +45,7 @@ public class ChefBehavior : AgentBehavior
                 workingDuration = 0;
                 workingTimer = 0;
                 carriedIngredient = currentStep.ingredientOutput; //Get new ingredient at the end of this step
+                actor.SetHolding(true);
 
                 //Go to next step of the recipe
                 if(carriedIngredient is Meal)
@@ -62,26 +65,28 @@ public class ChefBehavior : AgentBehavior
         }
 
         //Go to a delivering chariot
-        if(actor.chefState == ChefState.Deliver)
+        else if(actor.chefState == ChefState.Deliver)
         {
             destinationSetter.target = targetPoint;
             if (aIPath.desiredVelocity.x == 0 && aIPath.desiredVelocity.y == 0 && aIPath.reachedDestination) //Is in front of the furniture
             {
                 FoodDisplayer chariot = (furnitureToInteractWith as FoodDisplayer);
-                
+                chariot.mealsToServe.Add(carriedIngredient as Meal);
                 carriedIngredient = null;
+                actor.SetHolding(false);
                 actor.chefState = ChefState.Idle;
             }
         }
 
         //Waiting for a furniture to get free
-        if(actor.chefState == ChefState.Waiting)
+        else if(actor.chefState == ChefState.Waiting)
         {
             furnitureToInteractWith = findFurniture(currentStep.workbenchUsed, currentStep.ingredientOutput);
             if(furnitureToInteractWith != null)
             {
                 targetPoint = furnitureToInteractWith.accessPoint;
                 furnitureToInteractWith.isUsed = true;
+                destinationSetter.target = targetPoint;
                 actor.chefState = ChefState.GoToFurniture;
             }
         }
@@ -103,6 +108,7 @@ public class ChefBehavior : AgentBehavior
         {
             targetPoint = furnitureToInteractWith.accessPoint;
             furnitureToInteractWith.isUsed = true;
+            destinationSetter.target = targetPoint;
             actor.chefState = ChefState.GoToFurniture;
         }
     }
@@ -121,6 +127,7 @@ public class ChefBehavior : AgentBehavior
         {
             targetPoint = furnitureToInteractWith.accessPoint;
             furnitureToInteractWith.isUsed = true;
+            destinationSetter.target = targetPoint;
             actor.chefState = ChefState.GoToFurniture;
         }
     }
@@ -129,6 +136,7 @@ public class ChefBehavior : AgentBehavior
     {
         furnitureToInteractWith = findFurniture(FurnitureType.FoodDisplayer);
         targetPoint = furnitureToInteractWith.accessPoint;
+        destinationSetter.target = targetPoint;
         actor.chefState = ChefState.Deliver;
     }
 
