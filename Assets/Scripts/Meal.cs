@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum MealState { InProgress, Finished }
 public enum MealQuality { Perfect, Failed }
-public class Meal : MonoBehaviour
+public class Meal : Ingredient
 {
-    public MealState mealState;
     public MealQuality mealQuality;
 
     public Recipe recipe; //Actual recipe of this meal
@@ -15,7 +13,6 @@ public class Meal : MonoBehaviour
 
     public void Start()
     {
-        mealState = MealState.InProgress;
         mealQuality = MealQuality.Perfect;
     }
 
