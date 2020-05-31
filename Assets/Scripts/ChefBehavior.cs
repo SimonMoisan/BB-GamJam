@@ -81,22 +81,29 @@ public class ChefBehavior : AgentBehavior
         //Waiting for a furniture to get free
         else if(actor.chefState == ChefState.Waiting)
         {
-            //If Ingredient isn't null and the workbenchUsed isn't a fridge it causes problem
-            if(currentStep.workbenchUsed == FurnitureType.Fridge)
+            if (carriedIngredient is Meal)
             {
-                furnitureToInteractWith = findFurniture(currentStep.workbenchUsed, currentStep.ingredientOutput);
+                deliverMeal();
             }
             else
             {
-                furnitureToInteractWith = findFurniture(currentStep.workbenchUsed);
-            }
+                //If Ingredient isn't null and the workbenchUsed isn't a fridge it causes problem
+                if (currentStep.workbenchUsed == FurnitureType.Fridge)
+                {
+                    furnitureToInteractWith = findFurniture(currentStep.workbenchUsed, currentStep.ingredientOutput);
+                }
+                else
+                {
+                    furnitureToInteractWith = findFurniture(currentStep.workbenchUsed);
+                }
 
-            if(furnitureToInteractWith != null)
-            {
-                targetPoint = furnitureToInteractWith.accessPoint;
-                furnitureToInteractWith.isUsed = true;
-                destinationSetter.target = targetPoint;
-                actor.chefState = ChefState.GoToFurniture;
+                if (furnitureToInteractWith != null)
+                {
+                    targetPoint = furnitureToInteractWith.accessPoint;
+                    furnitureToInteractWith.isUsed = true;
+                    destinationSetter.target = targetPoint;
+                    actor.chefState = ChefState.GoToFurniture;
+                }
             }
         }
     }
@@ -143,9 +150,17 @@ public class ChefBehavior : AgentBehavior
     public void deliverMeal()
     {
         furnitureToInteractWith = findFurniture(FurnitureType.FoodDisplayer);
-        targetPoint = furnitureToInteractWith.accessPoint;
-        destinationSetter.target = targetPoint;
-        actor.chefState = ChefState.Deliver;
+        if (furnitureToInteractWith == null) //FoodDisplayer is full or used
+        {
+            actor.chefState = ChefState.Waiting;
+        }
+        else
+        {
+            targetPoint = furnitureToInteractWith.accessPoint;
+            furnitureToInteractWith.isUsed = true;
+            destinationSetter.target = targetPoint;
+            actor.chefState = ChefState.Deliver;
+        }
     }
 
     //Find the furniture required to do the current recipe's step, if this step require to find an ingredient, it will be a parameter
