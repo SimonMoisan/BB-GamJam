@@ -14,5 +14,7 @@ public class RecipeSteps : ScriptableObject
     //Can be an ingredient or a meal
     public Ingredient ingredientOutput;
 
+    public float duration;
+
     public FurnitureType workbenchUsed;
 }
