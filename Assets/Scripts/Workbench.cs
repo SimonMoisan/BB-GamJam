@@ -1,14 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using UnityEngine.UI;
 
 
 public class Workbench : Furniture
 {
-    public int numberInputSlots;
+    public Image progressionGauge;
 
-    [Header("Associated Object")]
-    public Ingredient[] ingredientInputSlots;
-    public Ingredient ingredientOutput;
-    public Meal mealOutput;
+    private void Update()
+    {
+        
+    }
 }

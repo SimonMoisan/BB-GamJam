@@ -5,7 +5,6 @@ using UnityEngine;
 public enum FurnitureType { DeepFryer, CuttingTable, SeasonTable, FryPan, Fridge, FoodDisplayer }
 public class Furniture : MonoBehaviour
 {
-    public float interactionTime;
     public bool isUsed;
     public FurnitureType furnitureType;
 

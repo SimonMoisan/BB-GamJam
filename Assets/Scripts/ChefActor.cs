@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ChefState { Idle, Working, GoToFurniture }
+public enum ChefState { Idle, Working, GoToFurniture, Waiting, Deliver }
 public class ChefActor : Actor
 {
     public ChefState chefState;
@@ -14,12 +14,6 @@ public class ChefActor : Actor
         anim = GetComponent<Animator>();
         agent = GetComponent<AgentBehavior>();
         gameManager = FindObjectOfType<GameManager>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void OnMouseDown()

@@ -5,5 +5,5 @@ using UnityEngine;
 public class FoodDisplayer : Furniture
 {
     public int capacity;
-    public List<Meal> mealToServe;
+    public List<Meal> mealsToServe;
 }
