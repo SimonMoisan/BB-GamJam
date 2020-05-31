@@ -10,12 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d79ffbef3514474f8b53471e99dcb07, type: 3}
-  m_Name: Recipe Step Fry Chips
+  m_Name: Recipe Step Get Raw Steak
   m_EditorClassIdentifier: 
-  ingredientsInput:
-  - {fileID: 5335293448787007292, guid: 4e03d9ec23396b147bc69543a0979418, type: 3}
-  wrongIngrdientOutput:
-  - {fileID: -6691904111365645621, guid: 505ea9100958e534287f729572da0523, type: 3}
-  ingredientOutput: {fileID: 5335293448787007292, guid: f7fb10c932c2ec14c8f66ee9e6e6d2ac,
+  ingredientsInput: []
+  wrongIngrdientOutput: []
+  ingredientOutput: {fileID: 5335293448787007292, guid: 2ea95d842ac1532418dcb6e1318a6f61,
     type: 3}
-  workbenchUsed: 0
+  workbenchUsed: 4
