@@ -15,6 +15,7 @@ public class RecipeSteps : ScriptableObject
     public Ingredient ingredientOutput;
 
     public float duration;
+    public float wrongDuration;
 
     public FurnitureType workbenchUsed;
 }

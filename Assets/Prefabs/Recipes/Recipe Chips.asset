@@ -19,3 +19,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3552b094d4eef584381c516e1d8f8a02, type: 2}
   ingredients:
   - {fileID: 5335293448787007292, guid: a9ea6a9bdd79e5a41bc0f07a93757839, type: 3}
+  mealSprite: {fileID: 21300000, guid: 0f12f7df2a9fc474ab39cc665217542b, type: 3}

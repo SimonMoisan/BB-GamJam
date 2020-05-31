@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Cooked Steak
+  icon: {fileID: 21300000, guid: 75b15d6569dfb924c8049b42741e0ae0, type: 3}

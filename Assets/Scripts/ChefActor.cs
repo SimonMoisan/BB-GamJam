@@ -6,7 +6,6 @@ public enum ChefState { Idle, Working, GoToFurniture, Waiting, Deliver }
 public class ChefActor : Actor
 {
     public ChefState chefState;
-    public bool isFailling;
 
     // Start is called before the first frame update
     void Start()

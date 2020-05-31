@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Command : MonoBehaviour
 {
@@ -8,7 +7,7 @@ public class Command : MonoBehaviour
     public float timeToPerform;
     public float actualTime;
     public Recipe recipe;
-
+    public CommandSlot commandSlot;
     public GameLoop gameLoop;
 
     private void Awake()
@@ -33,6 +32,13 @@ public class Command : MonoBehaviour
     {
         gameLoop.actualCommands.Remove(this);
         gameLoop.commandsFailed++;
+
+        //Reset command slot
+        commandSlot.enabled = false;
+        commandSlot.mealIcon.sprite = null;
+        commandSlot.mealIcon.enabled = false;
+        commandSlot.durationGauge.enabled = false;
+
         Destroy(gameObject);
     }
 }
