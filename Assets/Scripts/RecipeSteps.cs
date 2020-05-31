@@ -10,6 +10,7 @@ public class RecipeSteps : ScriptableObject
 
     //Can be an ingredient
     public Ingredient ingredientOutput;
+    public Meal mealOutput; //if final step of a recipe
 
     public WorkbenchType workbenchUsed;
 }

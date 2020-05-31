@@ -11,4 +11,5 @@ public class Workbench : MonoBehaviour
     [Header("Associated Object")]
     public Ingredient[] ingredientInputSlots;
     public Ingredient ingredientOutput;
+    public Meal mealOutput;
 }

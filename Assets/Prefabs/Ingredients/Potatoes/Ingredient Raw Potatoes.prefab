@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3551397108268924498}
   - component: {fileID: 5335293448787007292}
   m_Layer: 0
-  m_Name: Ingredient Potatoes
+  m_Name: Ingredient Raw Potatoes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

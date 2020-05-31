@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3551397108268924498}
-  - component: {fileID: 816797817335187251}
+  - component: {fileID: -6691904111365645621}
   m_Layer: 0
-  m_Name: Ingredient Season Steak
+  m_Name: Meal Overmached Potatoes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &816797817335187251
+--- !u!114 &-6691904111365645621
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df08ec30236c6504c913e7cb917a4283, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Season Steak
-  mealQuality: 0
-  recipe: {fileID: 11400000, guid: 82089655f7734074183ad59b103e5e43, type: 2}
+  name: Overmached Potatoes
+  mealQuality: 1
+  recipe: {fileID: 11400000, guid: db95300b145c0f2489d5da8b5f9f518b, type: 2}
   ingredientsInMeal: []
