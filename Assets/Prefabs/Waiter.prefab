@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6689239440919080581}
   - component: {fileID: 6689239440919080580}
   - component: {fileID: 6689239440919080583}
+  - component: {fileID: 739971683}
   m_Layer: 8
   m_Name: Waiter
   m_TagString: Untagged
@@ -86,7 +87,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!95 &6689239440919080600
 Animator:
   serializedVersion: 3
@@ -199,7 +200,6 @@ MonoBehaviour:
   aIPath: {fileID: 6689239440919080602}
   destinationSetter: {fileID: 6689239440919080603}
   targetPoint: {fileID: 0}
-  interactWithFurniture: {fileID: 0}
 --- !u!114 &6689239440919080583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,3 +212,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18fc4ea630cba8d46b8e2d1ea217dc6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
+  mood: 0
+  stopDuration: 0
+  stopTimer: 0
+  mouseOver: 0
+  facingRight: 0
+  canMove: 0
+  anim: {fileID: 0}
+  agent: {fileID: 0}
+  gameManager: {fileID: 0}
+--- !u!114 &739971683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6689239440919080582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c47b501f3400cf46b5aaf6cbc9bba1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  mood: 0
+  stopDuration: 0
+  stopTimer: 0
+  mouseOver: 0
+  facingRight: 0
+  canMove: 0
+  anim: {fileID: 0}
+  agent: {fileID: 0}
+  gameManager: {fileID: 0}
+  pathEffect: {fileID: 0}
+  speedEffect: 5
+  drawingPath: 0
+  speedApparition: 0.1
+  startWaiter: {fileID: 0}
+  visible: 0
