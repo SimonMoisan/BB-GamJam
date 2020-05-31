@@ -16,6 +16,7 @@ public class GameLoop : MonoBehaviour
     [Header("Command parameter :")]
     public Command[] possibleCommands; //Contains prefabs of command
     public List<Command> actualCommands;
+    public CommandSlot[] commandSlots;
     public float delayBtwCommand;
     public float delayBtwCommandTimer;
     public float randomDelayFactor;
@@ -62,14 +63,34 @@ public class GameLoop : MonoBehaviour
             gameTimer -= Time.deltaTime;
         }
 
-
         //Timer for new commands
         if (delayBtwCommandTimer <= 0)
         {
-            Command newCommandPrefab = chooseRandomCommand();
-            Command commandGO = Instantiate(newCommandPrefab, commandParent);
-            actualCommands.Add(commandGO);
-            delayBtwCommandTimer = delayBtwCommand + Random.Range(-randomDelayFactor, randomDelayFactor);
+            //If max number of command not reached, add command to a command slot
+            if(actualCommands.Count < commandSlots.Length)
+            {
+                Command newCommandPrefab = chooseRandomCommand();
+                Command commandGO = Instantiate(newCommandPrefab, commandParent);
+
+                //Add command to its command slot
+                actualCommands.Add(commandGO);
+                CommandSlot usedCommandSlot = commandSlots[actualCommands.Count - 1];
+                usedCommandSlot.command = commandGO;
+
+                //Set up sprite and gauge
+                usedCommandSlot.mealIcon.sprite = commandGO.recipe.mealSprite;
+                usedCommandSlot.mealIcon.enabled = true;
+                usedCommandSlot.durationGauge.enabled = true;
+
+                //Display command slot
+                usedCommandSlot.enabled = true;
+
+                delayBtwCommandTimer = delayBtwCommand + Random.Range(-randomDelayFactor, randomDelayFactor);
+            }
+            else
+            {
+                delayBtwCommandTimer = 0;
+            }
         }
         else
         {

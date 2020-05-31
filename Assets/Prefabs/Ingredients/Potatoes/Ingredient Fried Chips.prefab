@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Fried Chips
+  icon: {fileID: 21300000, guid: 76bb54636387dc849bf41a4000f10544, type: 3}
