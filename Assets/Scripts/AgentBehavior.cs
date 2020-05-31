@@ -10,6 +10,7 @@ public class AgentBehavior : MonoBehaviour
     public AIDestinationSetter destinationSetter;
     public Transform targetPoint;
     public Furniture interactWithFurniture;
+    public ParticleSystem visualPath;
 
     public void OnValidate()
     {
@@ -55,6 +56,7 @@ public class AgentBehavior : MonoBehaviour
 
         }
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
