@@ -81,7 +81,16 @@ public class ChefBehavior : AgentBehavior
         //Waiting for a furniture to get free
         else if(actor.chefState == ChefState.Waiting)
         {
-            furnitureToInteractWith = findFurniture(currentStep.workbenchUsed, currentStep.ingredientOutput);
+            //If Ingredient isn't null and the workbenchUsed isn't a fridge it causes problem
+            if(currentStep.workbenchUsed == FurnitureType.Fridge)
+            {
+                furnitureToInteractWith = findFurniture(currentStep.workbenchUsed, currentStep.ingredientOutput);
+            }
+            else
+            {
+                furnitureToInteractWith = findFurniture(currentStep.workbenchUsed);
+            }
+
             if(furnitureToInteractWith != null)
             {
                 targetPoint = furnitureToInteractWith.accessPoint;
@@ -98,7 +107,6 @@ public class ChefBehavior : AgentBehavior
         recipeToDo = recipe;
         currentStep = recipeToDo.recipeSteps[0];
 
-        //Find furniture to use at the start of the recipe : finding first ingredient in the good fridge
         furnitureToInteractWith = findFurniture(currentStep.workbenchUsed, currentStep.ingredientOutput);
         if (furnitureToInteractWith == null)
         {
