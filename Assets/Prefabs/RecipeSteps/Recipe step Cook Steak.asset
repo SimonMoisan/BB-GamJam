@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d79ffbef3514474f8b53471e99dcb07, type: 3}
-  m_Name: Recipe step Cook Steak
+  m_Name: Recipe Step Cook Steak
   m_EditorClassIdentifier: 
   ingredientsInput:
   - {fileID: 5335293448787007292, guid: 2ea95d842ac1532418dcb6e1318a6f61, type: 3}
+  wrongIngrdientOutput:
+  - {fileID: 3187839392316308326, guid: 50e955c92cfb6114d89de8875991f862, type: 3}
   ingredientOutput: {fileID: 5335293448787007292, guid: ab7dc057c3fa3c245bb6d712074a39b2,
     type: 3}
   workbenchUsed: 3

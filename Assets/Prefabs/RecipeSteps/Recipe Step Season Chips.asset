@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d79ffbef3514474f8b53471e99dcb07, type: 3}
-  m_Name: Recipe Step Fry Chips
+  m_Name: Recipe Step Season Chips
   m_EditorClassIdentifier: 
   ingredientsInput:
-  - {fileID: 5335293448787007292, guid: 4e03d9ec23396b147bc69543a0979418, type: 3}
+  - {fileID: 5335293448787007292, guid: f7fb10c932c2ec14c8f66ee9e6e6d2ac, type: 3}
   wrongIngrdientOutput:
-  - {fileID: -6691904111365645621, guid: 505ea9100958e534287f729572da0523, type: 3}
-  ingredientOutput: {fileID: 5335293448787007292, guid: f7fb10c932c2ec14c8f66ee9e6e6d2ac,
+  - {fileID: -6691904111365645621, guid: fbfc526ccb23a4045844572fa8cd1581, type: 3}
+  ingredientOutput: {fileID: -1402487593472694850, guid: 2aaa3d3390b6e6f40b2870ed61bcbbc8,
     type: 3}
-  workbenchUsed: 0
+  workbenchUsed: 2

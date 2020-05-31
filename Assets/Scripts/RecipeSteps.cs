@@ -8,9 +8,11 @@ public class RecipeSteps : ScriptableObject
     //Ingredients required to make this step
     public Ingredient[] ingredientsInput;
 
-    //Can be an ingredient
-    public Ingredient ingredientOutput;
-    public Meal mealOutput; //if final step of a recipe
+    //Alternate ingredient if action failling;
+    public Ingredient[] wrongIngrdientOutput;
 
-    public WorkbenchType workbenchUsed;
+    //Can be an ingredient or a meal
+    public Ingredient ingredientOutput;
+
+    public FurnitureType workbenchUsed;
 }

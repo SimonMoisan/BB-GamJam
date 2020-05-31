@@ -9,7 +9,6 @@ public class AgentBehavior : MonoBehaviour
     public AIPath aIPath;
     public AIDestinationSetter destinationSetter;
     public Transform targetPoint;
-    public Furniture interactWithFurniture;
 
     public void OnValidate()
     {

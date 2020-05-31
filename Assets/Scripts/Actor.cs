@@ -4,21 +4,42 @@ using UnityEngine;
 
 public class Actor : MonoBehaviour
 {
-    AgentBehavior agent;
-    bool mouseOver;
-
-    Animator anim;
-    bool facingRight = false;
+    [Header("Actor caracteristics :")]
+    public int id;
+    public int mood; //wip
+    public float stopDuration;
+    public float stopTimer;
+    [Header("Actor states :")]
+    public bool mouseOver;
+    public bool facingRight;
+    public bool canMove;
+    [Header("Associated objects :")]
+    public Animator anim;
+    public AgentBehavior agent;
+    public GameManager gameManager;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         agent = GetComponent<AgentBehavior>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
+    {
+        Orientate();
+    }
+
+    private void Move()
+    {
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        agent.moveToDestination(worldPosition);
+    }
+
+    private void Orientate()
     {
         Vector3 velocity = agent.aIPath.desiredVelocity;
         Vector3 scale = transform.localScale;
@@ -29,40 +50,12 @@ public class Actor : MonoBehaviour
             facingRight = true;
             scale.x *= -1;
             transform.localScale = scale;
-        } else if (velocity.x <= -0.01f && facingRight)
+        }
+        else if (velocity.x <= -0.01f && facingRight)
         {
             facingRight = false;
             scale.x *= -1;
             transform.localScale = scale;
         }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            agent.moveToDestination(worldPosition);
-        }
-        /*
-        if (GameManager.canAct && mouseOver && Input.GetMouseButton(0))
-        {
-            GameManager.canAct = false;
-            ChooseAction();
-        }
-        */
-    }
-
-    private void OnMouseEnter()
-    {
-        mouseOver = true;
-    }
-
-    private void OnMouseExit()
-    {
-        mouseOver = false;
-    }
-
-    void ChooseAction()
-    {
-        //Show Menu
-        
     }
 }

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Recipe Steak
   m_EditorClassIdentifier: 
   recipeSteps:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: eb442bdf691aa8147bf67039dc93bc98, type: 2}
+  - {fileID: 11400000, guid: 52f94b194ec774f44861a791967ece12, type: 2}
+  - {fileID: 11400000, guid: ced9bcf9bed1c944ca9afbc167f8a77b, type: 2}
   ingredients:
   - {fileID: 5335293448787007292, guid: 2ea95d842ac1532418dcb6e1318a6f61, type: 3}

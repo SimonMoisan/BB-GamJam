@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FoodDisplayer : MonoBehaviour
+public class FoodDisplayer : Furniture
 {
     public int capacity;
     public List<Meal> mealToServe;

@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d79ffbef3514474f8b53471e99dcb07, type: 3}
-  m_Name: Recipe step Season Steak
+  m_Name: Recipe Step Season Steak
   m_EditorClassIdentifier: 
   ingredientsInput:
   - {fileID: 5335293448787007292, guid: ab7dc057c3fa3c245bb6d712074a39b2, type: 3}
-  ingredientOutput: {fileID: 5335293448787007292, guid: 0108c82716cf2dc45a35a8bb2c7ce888,
+  wrongIngrdientOutput: []
+  ingredientOutput: {fileID: 3187839392316308326, guid: 32d14e7265d7a1440bb8ef1915c63824,
     type: 3}
   workbenchUsed: 2
