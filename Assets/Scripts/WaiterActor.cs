@@ -63,7 +63,9 @@ public class WaiterActor : Actor
                 agent.ingredientIcon.sprite = agent.carriedIngredient.icon;
                 agent.ingredientIcon.enabled = true;
                 chariot.mealsToServe.RemoveAt(0);
+                pathChoosen.SetActive(false);
                 pathChoosen = (Random.Range(0, 2) == 0) ? pathA : pathB;
+                pathChoosen.SetActive(true);
                 index = pathChoosen.transform.childCount - 1;
                 Vector3 target = pathChoosen.transform.GetChild(index).position;
             }
@@ -80,6 +82,7 @@ public class WaiterActor : Actor
             else
             { //We deliver the meal at the end of the coroutine
                 bringMeal = false;
+                pathChoosen.SetActive(false);
                 Deliver();
                 StartCoroutine("Disappear");
             }
@@ -91,6 +94,7 @@ public class WaiterActor : Actor
         searchingMeal = true;
         index = 1;
         pathChoosen = (Random.Range(0, 2) == 0) ? pathA : pathB;
+        pathChoosen.SetActive(true);
         Vector3 target = pathChoosen.transform.GetChild(index).position;
         StartCoroutine("Appear");
         MoveToTarget(target);
