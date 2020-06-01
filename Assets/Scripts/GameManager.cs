@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class GameManager : MonoBehaviour
     public AgentBehavior[] waiters;
     public GameLoop gameLoop;
     public Canvas cursor;
+    public Image cheerCooldownGauge;
+    public Image dragCooldownGauge;
+    public bool dragModeAcivated;
 
     [Header("Action timers :")]
     public float cheerCooldown;
@@ -17,9 +21,9 @@ public class GameManager : MonoBehaviour
     public float dragTimer;
 
     [Header("Mood values :")]
-    public int moodShootPenalty;
-    public int moodDragPenalty;
-    public int moodCheerBonus;
+    public float moodShootPenalty;
+    public float moodDragPenalty;
+    public float moodCheerBonus;
 
     private void Start()
     {
@@ -29,7 +33,26 @@ public class GameManager : MonoBehaviour
 
     public void Update()
     {
-        
+        cheerCooldownGauge.fillAmount = cheerTimer / cheerCooldown;
+        dragCooldownGauge.fillAmount = dragTimer / dragCooldown;
+
+        if(cheerTimer <= 0)
+        {
+            cheerTimer = 0;
+        }
+        else
+        {
+            cheerTimer -= Time.deltaTime;
+        }
+
+        if (dragTimer <= 0)
+        {
+            dragTimer = 0;
+        }
+        else
+        {
+            dragTimer -= Time.deltaTime;
+        }
     }
 
     public void shootAction()
@@ -56,7 +79,7 @@ public class GameManager : MonoBehaviour
                 //Go to pause
             }
             
-            resetSelection();
+            //resetSelection();
         }
     }
 
@@ -72,7 +95,16 @@ public class GameManager : MonoBehaviour
             {
                 cookerSelected.actualMood = cookerSelected.moodMax;
             }
-            resetSelection();
+            //resetSelection();
+            cheerTimer = cheerCooldown;
+        }
+    }
+
+    public void enableDragMode()
+    {
+        if(dragTimer <= 0)
+        {
+            dragModeAcivated = true;
         }
     }
 

@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isUsed: 0
-  furnitureType: 3
+  furnitureType: 0
   accessPoint: {fileID: 2936756139166245077}
   agentUsingFurniture: {fileID: 0}
   recipeStep: {fileID: 0}
