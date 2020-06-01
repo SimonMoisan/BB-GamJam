@@ -45,7 +45,6 @@ public class ChefBehavior : AgentBehavior
             destinationSetter.target = targetPoint;
             if (transform.position == targetPoint.position) //Is in front of the furniture
             {
-
                 //See if the work (only for workbench and for step with potential fail) will success or fail
                 if (furnitureToInteractWith is Workbench && currentStep.wrongIngrdientOutput.Length > 0)
                 {
@@ -371,26 +370,47 @@ public class ChefBehavior : AgentBehavior
         surrondingFurnitures = FindObjectsOfType<Furniture>();
         for (int i = 0; i < surrondingFurnitures.Length; i++)
         {
-            if (surrondingFurnitures[i].furnitureType == furnitureType && !surrondingFurnitures[i].isUsed)
+            if (surrondingFurnitures[i].furnitureType == furnitureType)
             {
                 //Case : Find delivering chariot 
                 if (surrondingFurnitures[i].furnitureType == FurnitureType.FoodDisplayer)
                 {
-                    FoodDisplayer chariot = surrondingFurnitures[i] as FoodDisplayer;
-                    if (chariot.mealsToServe.Count < chariot.capacity)
+                    if(!surrondingFurnitures[i].isUsed)
                     {
-                        return surrondingFurnitures[i];
+                        FoodDisplayer chariot = surrondingFurnitures[i] as FoodDisplayer;
+                        if (chariot.mealsToServe.Count < chariot.capacity)
+                        {
+                            return surrondingFurnitures[i];
+                        }
+                    }
+                    else
+                    {
+                        destinationSetter.target = surrondingFurnitures[i].transform;
                     }
                 }
                 //Case : Find a workbench
                 else if ((surrondingFurnitures[i] as Workbench) != null && ingredient == null)
                 {
-                    return surrondingFurnitures[i];
+                    if (!surrondingFurnitures[i].isUsed)
+                    {
+                        return surrondingFurnitures[i];
+                    }
+                    else
+                    {
+                        destinationSetter.target = surrondingFurnitures[i].transform;
+                    }
                 }
                 //Case : Find a frige with the right ingredient
                 else if(surrondingFurnitures[i].furnitureType == FurnitureType.Fridge && (surrondingFurnitures[i] as Fridge).ingredient == ingredient)
                 {
-                    return surrondingFurnitures[i];
+                    if (!surrondingFurnitures[i].isUsed)
+                    {
+                        return surrondingFurnitures[i];
+                    }
+                    else
+                    {
+                        destinationSetter.target = surrondingFurnitures[i].transform;
+                    }
                 }
             }
         }
