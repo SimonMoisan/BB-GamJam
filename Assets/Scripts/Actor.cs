@@ -6,7 +6,6 @@ public class Actor : MonoBehaviour
 {
     [Header("Actor caracteristics :")]
     public int id;
-    public int mood; //wip
     public float stopDuration;
     public float stopTimer;
     [Header("Actor states :")]

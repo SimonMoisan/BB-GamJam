@@ -10,6 +10,8 @@ public class ChefBehavior : AgentBehavior
     public float workingDuration;
     public float workingTimer;
     public bool isFailling;
+    public int moodMax;
+    public int actualMood;
 
     [Header("Associated objects chef :")]
     public ChefActor actor;
@@ -22,6 +24,7 @@ public class ChefBehavior : AgentBehavior
 
     private void Start()
     {
+        actualMood = moodMax;
         gameManager = FindObjectOfType<GameManager>();
     }
 
