@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameLoop : MonoBehaviour
 {
@@ -77,6 +78,14 @@ public class GameLoop : MonoBehaviour
     public void endGame()
     {
         gameIsRunning = false;
+        if (actualMoney < moneyJalons[0])
+        {
+            SceneManager.LoadScene("GameOver");
+        }
+        else
+        {
+            SceneManager.LoadScene("Win");
+        }
     }
 
     public void timerManagement()
