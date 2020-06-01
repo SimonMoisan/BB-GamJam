@@ -35,8 +35,23 @@ public class GameManager : MonoBehaviour
 
     public void Update()
     {
-        cheerCooldownGauge.fillAmount = cheerTimer / cheerCooldown;
-        dragCooldownGauge.fillAmount = dragTimer / dragCooldown;
+        if (cheerTimer == 0)
+        {
+            cheerCooldownGauge.fillAmount = 0;
+        }
+        else
+        {
+            cheerCooldownGauge.fillAmount = cheerTimer / cheerCooldown;
+        }
+        
+        if (dragTimer == 0)
+        {
+            dragCooldownGauge.fillAmount = 0;
+        }
+        else
+        {
+            dragCooldownGauge.fillAmount = dragTimer / dragCooldown;
+        }
 
         if(cheerTimer <= 0)
         {
@@ -66,6 +81,8 @@ public class GameManager : MonoBehaviour
         if(cookerSelected != null && (cookerSelected.actor.chefState == ChefState.Working || cookerSelected.actor.chefState == ChefState.GoToFurniture || cookerSelected.actor.chefState == ChefState.Deliver))
         {
             Debug.Log("Shoot");
+            Audio.AudioManager.Play("Slap");
+            cookerSelected.actor.SetSlap();
             //Can do action
             if(cookerSelected.actualMood > 0)
             {
@@ -91,6 +108,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
+                cookerSelected.actor.gameObject.SetActive(false);
                 //Go to pause
             }
             
@@ -100,7 +118,7 @@ public class GameManager : MonoBehaviour
 
     public void cheerAction()
     {
-        if (cookerSelected != null)
+        if (cookerSelected != null && cheerTimer <= 0)
         {
             if (cookerSelected.actualMood + moodCheerBonus < cookerSelected.moodMax)
             {

@@ -29,4 +29,9 @@ public class ChefActor : Actor
     {
         anim.SetBool("Drag", drag);
     }
+
+    public void SetSlap()
+    {
+        anim.SetTrigger("Slap");
+    }
 }

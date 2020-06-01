@@ -373,44 +373,23 @@ public class ChefBehavior : AgentBehavior
             if (surrondingFurnitures[i].furnitureType == furnitureType)
             {
                 //Case : Find delivering chariot 
-                if (surrondingFurnitures[i].furnitureType == FurnitureType.FoodDisplayer)
+                if (surrondingFurnitures[i].furnitureType == FurnitureType.FoodDisplayer && !surrondingFurnitures[i].isUsed)
                 {
-                    if(!surrondingFurnitures[i].isUsed)
+                    FoodDisplayer chariot = surrondingFurnitures[i] as FoodDisplayer;
+                    if (chariot.mealsToServe.Count < chariot.capacity)
                     {
-                        FoodDisplayer chariot = surrondingFurnitures[i] as FoodDisplayer;
-                        if (chariot.mealsToServe.Count < chariot.capacity)
-                        {
-                            return surrondingFurnitures[i];
-                        }
-                    }
-                    else
-                    {
-                        destinationSetter.target = surrondingFurnitures[i].transform;
+                        return surrondingFurnitures[i];
                     }
                 }
                 //Case : Find a workbench
                 else if ((surrondingFurnitures[i] as Workbench) != null && ingredient == null)
                 {
-                    if (!surrondingFurnitures[i].isUsed)
-                    {
-                        return surrondingFurnitures[i];
-                    }
-                    else
-                    {
-                        destinationSetter.target = surrondingFurnitures[i].transform;
-                    }
+                    return surrondingFurnitures[i];
                 }
                 //Case : Find a frige with the right ingredient
                 else if(surrondingFurnitures[i].furnitureType == FurnitureType.Fridge && (surrondingFurnitures[i] as Fridge).ingredient == ingredient)
                 {
-                    if (!surrondingFurnitures[i].isUsed)
-                    {
-                        return surrondingFurnitures[i];
-                    }
-                    else
-                    {
-                        destinationSetter.target = surrondingFurnitures[i].transform;
-                    }
+                    return surrondingFurnitures[i];
                 }
             }
         }
