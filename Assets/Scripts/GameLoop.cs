@@ -23,12 +23,14 @@ public class GameLoop : MonoBehaviour
 
     [Header("Associated objects :")]
     public Transform commandParent;
+    public GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
         gameTimer = gameDuration;
-        delayBtwCommandTimer = delayBtwCommand;
+        delayBtwCommandTimer = 5;
         startGame();
     }
 
@@ -85,6 +87,12 @@ public class GameLoop : MonoBehaviour
 
                 //Display command slot
                 usedCommandSlot.enabled = true;
+
+                //Enable selector if an agent is selected
+                if(gameManager.cookerSelected != null)
+                {
+                    usedCommandSlot.selector.enabled = true;
+                }
 
                 delayBtwCommandTimer = delayBtwCommand + Random.Range(-randomDelayFactor, randomDelayFactor);
             }
