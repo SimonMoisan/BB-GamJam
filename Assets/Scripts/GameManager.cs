@@ -9,22 +9,30 @@ public class GameManager : MonoBehaviour
     public AgentBehavior[] waiters;
     public GameLoop gameLoop;
 
+    public int moodShootPenalty;
+    public int moodDragPenalty;
+    public int moodCheerBonus;
+
     private void Start()
     {
         cookers = FindObjectsOfType<ChefBehavior>();
         gameLoop = FindObjectOfType<GameLoop>();
     }
 
-    private void Update()
-    {
-        
-    }
-
     public void shootAction()
     {
         if(cookerSelected != null && cookerSelected.actor.chefState == ChefState.Working)
         {
-
+            //Calcul new mood
+            if(cookerSelected.actualMood > 0)
+            {
+                cookerSelected.actualMood -= moodShootPenalty;
+            }
+            else
+            {
+                cookerSelected.actualMood = 0;
+            }
+            
             resetSelection();
         }
     }
@@ -33,7 +41,7 @@ public class GameManager : MonoBehaviour
     {
         if (cookerSelected != null)
         {
-
+            cookerSelected.actualMood -= moodCheerBonus;
             resetSelection();
         }
     }
