@@ -3124,10 +3124,17 @@ MonoBehaviour:
   moneyJalons: 
   commandsSuccesful: 0
   commandsFailed: 0
-  possibleCommands: []
+  possibleCommands:
+  - {fileID: 2891445248645343228, guid: 2921473c68af72f4c995e4d12513f7fa, type: 3}
+  - {fileID: 2891445248645343228, guid: b7029ce3b389f48428a8934e6555070b, type: 3}
   actualCommands: []
-  commandSlots: []
-  delayBtwCommand: 0
+  commandSlots:
+  - {fileID: 1437907426}
+  - {fileID: 1899336407}
+  - {fileID: 1691471310}
+  - {fileID: 2072507959}
+  - {fileID: 806327062}
+  delayBtwCommand: 1
   delayBtwCommandTimer: 0
   randomDelayFactor: 0
   commandParent: {fileID: 933520242}
@@ -3864,7 +3871,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &640125062
 Transform:
   m_ObjectHideFlags: 0
@@ -4129,6 +4136,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Meat Fridge Right Acess
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381960813791035499, guid: dfb0a756fde7a704f84091011e11bd49,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 7381960813791035500, guid: dfb0a756fde7a704f84091011e11bd49,
         type: 3}
@@ -6285,7 +6297,7 @@ TilemapRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 1.0370706, y: 0.7754543, z: 0}
+  m_ChunkCullingBounds: {x: 0.051962018, y: 0.29848105, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 2
@@ -6610,8 +6622,26 @@ Tilemap:
   - first: {x: -4, y: 7, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileIndex: 16
+      m_TileSpriteIndex: 18
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 1
+      m_TileObjectToInstantiateIndex: 65535
+      m_AllTileFlags: 1073741825
+  - first: {x: -3, y: 7, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 18
+      m_TileSpriteIndex: 15
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 1
+      m_TileObjectToInstantiateIndex: 65535
+      m_AllTileFlags: 1073741825
+  - first: {x: -2, y: 7, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 18
+      m_TileSpriteIndex: 15
       m_TileMatrixIndex: 0
       m_TileColorIndex: 1
       m_TileObjectToInstantiateIndex: 65535
@@ -6619,8 +6649,26 @@ Tilemap:
   - first: {x: -1, y: 7, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileIndex: 18
+      m_TileSpriteIndex: 15
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 1
+      m_TileObjectToInstantiateIndex: 65535
+      m_AllTileFlags: 1073741825
+  - first: {x: 0, y: 7, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 18
+      m_TileSpriteIndex: 15
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 1
+      m_TileObjectToInstantiateIndex: 65535
+      m_AllTileFlags: 1073741825
+  - first: {x: 1, y: 7, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 18
+      m_TileSpriteIndex: 15
       m_TileMatrixIndex: 0
       m_TileColorIndex: 1
       m_TileObjectToInstantiateIndex: 65535
@@ -6628,22 +6676,22 @@ Tilemap:
   - first: {x: 2, y: 7, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileIndex: 18
+      m_TileSpriteIndex: 15
       m_TileMatrixIndex: 0
       m_TileColorIndex: 1
       m_TileObjectToInstantiateIndex: 65535
       m_AllTileFlags: 1073741825
-  - first: {x: 7, y: 7, z: 0}
+  - first: {x: 3, y: 7, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 16
-      m_TileSpriteIndex: 18
+      m_TileIndex: 18
+      m_TileSpriteIndex: 15
       m_TileMatrixIndex: 0
       m_TileColorIndex: 1
       m_TileObjectToInstantiateIndex: 65535
       m_AllTileFlags: 1073741825
-  - first: {x: 8, y: 7, z: 0}
+  - first: {x: 4, y: 7, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 15
@@ -6679,23 +6727,12 @@ Tilemap:
       m_TileColorIndex: 1
       m_TileObjectToInstantiateIndex: 65535
       m_AllTileFlags: 1073741825
-  - first: {x: 11, y: 8, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 7
-      m_TileSpriteIndex: 7
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 1
-      m_TileObjectToInstantiateIndex: 65535
-      m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: 2080f380a2b96e14ab9cff342daf2d3c, type: 2}
-  - m_RefCount: 3
-    m_Data: {fileID: 11400000, guid: 7e29053c9632012458242c8f5ecd3957, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
   - m_RefCount: 0
@@ -6704,7 +6741,9 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 20
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 19
     m_Data: {fileID: 11400000, guid: 4573f263d7f217d419466bca8aef0594, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -6726,8 +6765,8 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: db51a0028f6b5104fbe36630d420e45c, type: 2}
   - m_RefCount: 8
     m_Data: {fileID: 11400000, guid: ea3678a9c2a9ba847bca7a7c3c539b30, type: 2}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 7
+    m_Data: {fileID: 11400000, guid: a2c9c813dd4a33b45807817adf136569, type: 2}
   - m_RefCount: 8
     m_Data: {fileID: 11400000, guid: f47af1a7edd7cad4c930e74ea080adb3, type: 2}
   m_TileSpriteArray:
@@ -6735,8 +6774,6 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: 21300000, guid: 6f5aa1150da828c48a8276f0f0579a31, type: 3}
-  - m_RefCount: 3
-    m_Data: {fileID: 21300000, guid: 169822289841eaa40bc43b91bc8d0463, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
   - m_RefCount: 0
@@ -6745,7 +6782,9 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 20
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 19
     m_Data: {fileID: 21300000, guid: 6491047584577004fa919bd03dee2fb7, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -6761,8 +6800,8 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 7
+    m_Data: {fileID: 21300000, guid: f041dfe436d18784f985917388ebe875, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: b1fd2e18b1fadfe49acefa8a77b52e92, type: 3}
   - m_RefCount: 8
@@ -6772,7 +6811,7 @@ Tilemap:
   - m_RefCount: 8
     m_Data: {fileID: 21300000, guid: 8dcf67f97cb26b9408214c43f6d8bedc, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 43
+  - m_RefCount: 46
     m_Data:
       e00: 1
       e01: 0
@@ -6793,7 +6832,7 @@ Tilemap:
   m_TileColorArray:
   - m_RefCount: 0
     m_Data: {r: 0, g: 0, b: 0, a: 0}
-  - m_RefCount: 43
+  - m_RefCount: 46
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -9960,15 +9999,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Potatoes Fridge Right Acess
       objectReference: {fileID: 0}
+    - target: {fileID: 7381960813791035499, guid: e4ef01d8148e1d142aea558e1d45202c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 7381960813791035500, guid: e4ef01d8148e1d142aea558e1d45202c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: 0.013
       objectReference: {fileID: 0}
     - target: {fileID: 7381960813791035500, guid: e4ef01d8148e1d142aea558e1d45202c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.2
+      value: 3.719
       objectReference: {fileID: 0}
     - target: {fileID: 7381960813791035500, guid: e4ef01d8148e1d142aea558e1d45202c,
         type: 3}

@@ -9,21 +9,22 @@ public class WaiterActor : Actor
     [Header("Path")]
     public GameObject pathA;
     public GameObject pathB;
-    AIPath aIPath;
-    [SerializeField]
-    bool searchingMeal = false;
-    [SerializeField]
-    bool bringMeal = false;
     public GameObject pathChoosen;
     public int index;
+    AIPath aIPath;
 
     [Header("Entry")]
     public float speedApparition = 1f;
     SpriteRenderer sprite;
     Color color;
 
-    [Header("Chariot")]
+    [Header("Delivery")]
     public FoodDisplayer chariot;
+    public GameLoop gameLoop;
+    [SerializeField]
+    bool searchingMeal = false;
+    [SerializeField]
+    bool bringMeal = false;
 
     private void Start()
     {
@@ -34,6 +35,7 @@ public class WaiterActor : Actor
         sprite = GetComponent<SpriteRenderer>();
         color = sprite.color;
         sprite.color = new Color(0, 0, 0, 0); //Hidding the character
+        gameLoop = FindObjectOfType<GameLoop>();
     }
 
     // Update is called once per frame
@@ -69,13 +71,27 @@ public class WaiterActor : Actor
         else if (bringMeal && aIPath.reachedDestination)
         {
             index--;
-            if (index >= 0)
+            if (index >= 0) //Path unfinished
             {
                 Vector3 target = pathChoosen.transform.GetChild(index).position;
                 MoveToTarget(target);
             }
             else
-            {
+            { //We deliver the meal
+                Meal meal = (agent.carriedIngredient as Meal);
+
+                foreach(Command command in gameLoop.actualCommands)
+                {
+                    if (command.recipe == meal.recipe)
+                    {
+                        command.commandDelivered(meal);
+                    }
+                    break;
+                }
+                
+                agent.carriedIngredient = null;
+                agent.ingredientIcon.enabled = false;
+
                 StartCoroutine("Disappear");
             }
         }
@@ -130,8 +146,6 @@ public class WaiterActor : Actor
         }
         temp.a = 0;
         sprite.color = temp;
-        agent.carriedIngredient = null;
-        agent.ingredientIcon.enabled = false;
         bringMeal = false;
     }
 }
