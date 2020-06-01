@@ -15,6 +15,7 @@ public class WaiterActor : Actor
 
     [Header("Entry")]
     public float speedApparition = 1f;
+    public bool visible = false;
     SpriteRenderer sprite;
     Color color;
 
@@ -41,7 +42,7 @@ public class WaiterActor : Actor
     // Update is called once per frame
     void Update()
     {
-        if (chariot.mealsToServe.Count > 0 && !bringMeal && !searchingMeal)
+        if (chariot.mealsToServe.Count > 0 && !bringMeal && !searchingMeal && !visible)
         {
             CallWaiter();
         }
@@ -77,21 +78,9 @@ public class WaiterActor : Actor
                 MoveToTarget(target);
             }
             else
-            { //We deliver the meal
-                Meal meal = (agent.carriedIngredient as Meal);
-
-                foreach(Command command in gameLoop.actualCommands)
-                {
-                    if (command.recipe == meal.recipe)
-                    {
-                        command.commandDelivered(meal);
-                    }
-                    break;
-                }
-                
-                agent.carriedIngredient = null;
-                agent.ingredientIcon.enabled = false;
-
+            { //We deliver the meal at the end of the coroutine
+                bringMeal = false;
+                Deliver();
                 StartCoroutine("Disappear");
             }
         }
@@ -119,6 +108,30 @@ public class WaiterActor : Actor
         }
     }
 
+    private void Deliver()
+    {
+        Meal meal = (agent.carriedIngredient as Meal);
+        Command commandToDeliver = null;
+        float time = float.MaxValue;
+        for (int i = 0; i < gameLoop.actualCommands.Count; i++)
+        {
+            if (gameLoop.actualCommands[i].recipe == meal.recipe)
+            {
+                if (time > gameLoop.actualCommands[i].actualTime)
+                {
+                    time = gameLoop.actualCommands[i].actualTime;
+                    commandToDeliver = gameLoop.actualCommands[i];
+                }
+            }
+        }
+        if (commandToDeliver != null)
+        {
+            commandToDeliver.commandDelivered(meal);
+        }
+        agent.carriedIngredient = null;
+        agent.ingredientIcon.enabled = false;
+    }
+
     private IEnumerator Appear()
     {
         transform.position = pathChoosen.transform.GetChild(0).position;
@@ -132,6 +145,7 @@ public class WaiterActor : Actor
         }
         temp.a = 1;
         sprite.color = temp;
+        visible = true;
     }
 
     private IEnumerator Disappear()
@@ -146,7 +160,7 @@ public class WaiterActor : Actor
         }
         temp.a = 0;
         sprite.color = temp;
-        bringMeal = false;
+        visible = false;
     }
 }
 

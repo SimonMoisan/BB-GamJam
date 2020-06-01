@@ -18,6 +18,6 @@ MonoBehaviour:
   - {fileID: -6691904111365645621, guid: fbfc526ccb23a4045844572fa8cd1581, type: 3}
   ingredientOutput: {fileID: -1402487593472694850, guid: 2aaa3d3390b6e6f40b2870ed61bcbbc8,
     type: 3}
-  duration: 20
-  wrongDuration: 30
+  duration: 2
+  wrongDuration: 3
   workbenchUsed: 2
