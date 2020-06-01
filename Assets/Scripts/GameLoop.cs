@@ -15,6 +15,7 @@ public class GameLoop : MonoBehaviour
     public int[] moneyJalons; //Bronze, Silver, Gold, etc...
     public int commandsSuccesful;
     public int commandsFailed;
+    
 
     [Header("Command parameter :")]
     public Command[] possibleCommands; //Contains prefabs of command
@@ -27,7 +28,12 @@ public class GameLoop : MonoBehaviour
     [Header("Associated objects :")]
     public Transform commandParent;
     public GameManager gameManager;
-    public Image moneyGauge; 
+    public Image moneyGauge;
+    public GameObject handcloak;
+
+    public int indexGordon; //0: satisfait, 1: neutre, 2: tilted, 3: colère
+    public Sprite[] gordonImages;
+    public Image gordonPortrait;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +52,8 @@ public class GameLoop : MonoBehaviour
             timerManagement();
         }
         moneyGauge.fillAmount = actualMoney / maxMoney;
+
+        handcloak.transform.Rotate(new Vector3(0, 0, (-360 / gameDuration) * Time.deltaTime)); 
     }
 
     public void startGame()
@@ -131,5 +139,10 @@ public class GameLoop : MonoBehaviour
     {
         int randomIndex = Random.Range(0, possibleCommands.Length);
         return possibleCommands[randomIndex];
+    }
+
+    public void changePortrait(int idPortrait)
+    {
+        gordonPortrait.sprite = gordonImages[idPortrait];
     }
 }

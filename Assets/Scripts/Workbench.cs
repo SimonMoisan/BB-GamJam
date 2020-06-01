@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine;
 
 
 public class Workbench : Furniture
@@ -11,8 +12,16 @@ public class Workbench : Furniture
 
     private void Start()
     {
-        progressionGauge.enabled = false;
-        iconOutputIngredient.enabled = false;
+        if(progressionGauge != null && iconOutputIngredient != null)
+        {
+            progressionGauge.enabled = false;
+            iconOutputIngredient.enabled = false;
+        }
+        else
+        {
+            Debug.Log("Missing objects on furniture");
+        }
+        
     }
 
     private void Update()

@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
                 }
                 else if(cookerSelected.carriedIngredient is Meal && (cookerSelected.carriedIngredient as Meal).mealQuality == MealQuality.Failed)
                 {
-
+                    cookerSelected.trashMeal();
                 }
 
 
