@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Raw Potatoes
+  icon: {fileID: 21300000, guid: 8e1cca39d05cbcc408b1c1c8c88b8077, type: 3}

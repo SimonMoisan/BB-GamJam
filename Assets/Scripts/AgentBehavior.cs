@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 using Pathfinding;
 
 public class AgentBehavior : MonoBehaviour
@@ -9,9 +8,14 @@ public class AgentBehavior : MonoBehaviour
     public AIPath aIPath;
     public AIDestinationSetter destinationSetter;
     public Transform targetPoint;
+    public Ingredient carriedIngredient;
+    public Image ingredientIcon;
+    public Image gaugeIcon;
 
     public void OnValidate()
     {
+        ingredientIcon.enabled = false;
+        gaugeIcon.enabled = false;
         aIPath = GetComponent<AIPath>();
         destinationSetter = GetComponent<AIDestinationSetter>();
     }

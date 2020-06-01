@@ -1,7 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
-<<<<<<< Updated upstream
-=======
 --- !u!1 &1952553719549423993
 GameObject:
   m_ObjectHideFlags: 0
@@ -54,7 +52,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1952553719549423993}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -148,7 +146,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
->>>>>>> Stashed changes
 --- !u!1 &2657460578220713764
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,6 +206,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2657460578220713765}
+  - {fileID: 583688592793496601}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -230,7 +228,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0f3c95e1eef98ba42b76848580b09396, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -261,7 +259,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 1
+  m_SpriteSortPoint: 0
 --- !u!114 &2657460578387217891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,9 +276,6 @@ MonoBehaviour:
   furnitureType: 1
   accessPoint: {fileID: 2657460578220713765}
   agentUsingFurniture: {fileID: 0}
-<<<<<<< Updated upstream
-  progressionGauge: {fileID: 0}
-=======
   recipeStep: {fileID: 0}
   progressionGauge: {fileID: 5145111869443877392}
   iconOutputIngredient: {fileID: 7067965316017352540}
@@ -321,7 +316,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.183, y: 1.005}
+  m_AnchoredPosition: {x: 0.5919528, y: 0.7245555}
   m_SizeDelta: {x: 0.8884, y: 0.432}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1339106472085928980
@@ -384,4 +379,3 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
->>>>>>> Stashed changes

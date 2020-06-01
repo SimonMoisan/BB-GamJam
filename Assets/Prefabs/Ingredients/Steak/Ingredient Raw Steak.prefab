@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Raw Steak
+  icon: {fileID: 21300000, guid: 643b906cfacef51478ab734616b19f4f, type: 3}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3551397108268924498}
   - component: {fileID: 3187839392316308326}
   m_Layer: 0
-  m_Name: Meal Overcooked Stea
+  m_Name: Meal Overcooked Steak
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Overcooked Steak
+  icon: {fileID: 21300000, guid: a0a335820dd4e79459ff76b154f66629, type: 3}
   mealQuality: 1
   recipe: {fileID: 11400000, guid: 82089655f7734074183ad59b103e5e43, type: 2}
   ingredientsInMeal: []

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3551397108268924498}
   - component: {fileID: 816797817335187251}
   m_Layer: 0
-  m_Name: Ingredient Season Steak
+  m_Name: Meal Season Steak
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Season Steak
+  icon: {fileID: 21300000, guid: 0912d864f7c842e4c9457af189c2919c, type: 3}
   mealQuality: 0
   recipe: {fileID: 11400000, guid: 82089655f7734074183ad59b103e5e43, type: 2}
   ingredientsInMeal: []

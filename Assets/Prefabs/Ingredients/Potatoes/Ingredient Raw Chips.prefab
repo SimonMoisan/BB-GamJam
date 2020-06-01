@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3551397108268924498}
   - component: {fileID: 5335293448787007292}
   m_Layer: 0
-  m_Name: Ingredient Raw Potatoes
+  m_Name: Ingredient Raw Chips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Raw Chips
+  icon: {fileID: 21300000, guid: 76bb54636387dc849bf41a4000f10544, type: 3}
