@@ -11,17 +11,19 @@ public class WaiterActor : Actor
     public GameObject pathB;
     AIPath aIPath;
     [SerializeField]
-    bool processingPath = false;
+    bool searchingMeal = false;
+    [SerializeField]
+    bool bringMeal = false;
     public GameObject pathChoosen;
     public int index;
 
     [Header("Entry")]
     public float speedApparition = 1f;
-    public Transform startWaiter;
-    [SerializeField]
-    bool visible = false;
     SpriteRenderer sprite;
     Color color;
+
+    [Header("Chariot")]
+    public FoodDisplayer chariot;
 
     private void Start()
     {
@@ -38,12 +40,12 @@ public class WaiterActor : Actor
     void Update()
     {
         /************** Temporary **************/
-        if (Input.GetKey(KeyCode.Space) && !processingPath)
+        if (chariot.mealsToServe.Count > 0 && !bringMeal && !searchingMeal)
         {
             CallWaiter();
         }
         /***************************************/
-        if (processingPath && aIPath.reachedDestination)
+        if (searchingMeal && aIPath.reachedDestination)
         {
             index++;
             if (index < pathChoosen.transform.childCount)
@@ -53,8 +55,26 @@ public class WaiterActor : Actor
             }
             else
             {
-                processingPath = false;
                 Debug.Log("You have arrived");
+                searchingMeal = false;
+                bringMeal = true;
+                chariot.mealsToServe.RemoveAt(0);
+                pathChoosen = (Random.Range(0, 2) == 0) ? pathA : pathB;
+                index = pathChoosen.transform.childCount - 1;
+                Vector3 target = pathChoosen.transform.GetChild(index).position;
+            }
+        }
+
+        else if (bringMeal && aIPath.reachedDestination)
+        {
+            index--;
+            if (index >= 0)
+            {
+                Vector3 target = pathChoosen.transform.GetChild(index).position;
+                MoveToTarget(target);
+            }
+            else
+            {
                 StartCoroutine("Disappear");
             }
         }
@@ -62,12 +82,11 @@ public class WaiterActor : Actor
 
     public void CallWaiter()
     {
-        visible = true;
-        processingPath = true;
-        index = 0;
-        StartCoroutine("Appear");
-        pathChoosen = (Random.Range(0, 1) == 0) ? pathA : pathB;
+        searchingMeal = true;
+        index = 1;
+        pathChoosen = (Random.Range(0, 2) == 0) ? pathA : pathB;
         Vector3 target = pathChoosen.transform.GetChild(index).position;
+        StartCoroutine("Appear");
         MoveToTarget(target);
     }
 
@@ -85,7 +104,7 @@ public class WaiterActor : Actor
 
     private IEnumerator Appear()
     {
-        transform.position = startWaiter.position;
+        transform.position = pathChoosen.transform.GetChild(0).position;
         Color temp = color;
         temp.a = 0;
         while (sprite.color.a < 1)
@@ -110,6 +129,7 @@ public class WaiterActor : Actor
         }
         temp.a = 0;
         sprite.color = temp;
+        bringMeal = false;
     }
 }
 
