@@ -38,14 +38,7 @@ public class CommandSlot : MonoBehaviour
         if(command != null && gameManager.cookerSelected != null && gameManager.cookerSelected.recipeToDo == null)
         {
             gameManager.cookerSelected.addNewRecipe(command.recipe);
-            //Deselect cooker
-            gameManager.cookerSelected.selector.enabled = false;
-            gameManager.cookerSelected = null;
-            //Deselec commands
-            for (int i = 0; i < gameLoop.commandSlots.Length; i++)
-            {
-                gameLoop.commandSlots[i].selector.enabled = false;
-            }
+            gameManager.resetSelection();
         }
     }
 }
