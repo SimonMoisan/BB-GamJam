@@ -39,12 +39,10 @@ public class WaiterActor : Actor
     // Update is called once per frame
     void Update()
     {
-        /************** Temporary **************/
         if (chariot.mealsToServe.Count > 0 && !bringMeal && !searchingMeal)
         {
             CallWaiter();
         }
-        /***************************************/
         else if (searchingMeal && aIPath.reachedDestination)
         {
             index++;
