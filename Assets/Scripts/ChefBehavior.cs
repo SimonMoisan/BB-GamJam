@@ -9,9 +9,14 @@ public class ChefBehavior : AgentBehavior
     [Range(0, 99)] public int failPercentage; //percentage chance to do the wrong thing
     public float workingDuration;
     public float workingTimer;
+    public float moodMax;
+    public float actualMood;
+    public Vector3 positionBeforeDrag;
+    public Vector2 dragOffset; //visual
+
+    [Header("Agent states :")]
     public bool isFailling;
-    public int moodMax;
-    public int actualMood;
+    public bool isDragged;
 
     [Header("Associated objects chef :")]
     public ChefActor actor;
@@ -21,6 +26,10 @@ public class ChefBehavior : AgentBehavior
     public Furniture furnitureToInteractWith;
     public GameManager gameManager;
     public Image selector;
+    public Image moodGauge;
+    public Camera camera;
+
+    public Furniture[] surrondingFurnitures;
 
     private void Start()
     {
@@ -177,6 +186,11 @@ public class ChefBehavior : AgentBehavior
                 recipeToDo = null;
                 recipeStepIndex = 0;
                 currentStep = null;
+
+                if(isFailling)
+                {
+                    isFailling = false;
+                }
                 
                 actor.chefState = ChefState.Idle;
             }
@@ -211,16 +225,43 @@ public class ChefBehavior : AgentBehavior
             }
         }
 
-        //Select agent
-        if(Input.GetMouseButtonDown(0))
+        if(isDragged)
         {
-            gameManager.selectCooker(this);
+            Vector3 newPosition = new Vector3(camera.ScreenToWorldPoint(Input.mousePosition).x + dragOffset.x, camera.ScreenToWorldPoint(Input.mousePosition).y + dragOffset.y, 0);
+            transform.position = newPosition;
         }
 
-        //Drag agent
-        if(Input.GetMouseButtonDown(1))
-        {
+        //Display mood gauge
+        moodGauge.fillAmount = actualMood / moodMax;
+    }
 
+    private void OnMouseDown()
+    {
+        gameManager.selectCooker(this);
+    }
+
+    private void OnMouseDrag()
+    {
+        if(gameManager.dragModeAcivated)
+        {
+            actor.canMove = false;
+            if (actor.chefState != ChefState.Working)
+            {
+                positionBeforeDrag = transform.position;
+                isDragged = true;
+            }
+        }
+    }
+
+    private void OnMouseUp()
+    {
+        actor.canMove = true;
+        
+        if(gameManager.dragModeAcivated)
+        {
+            isDragged = false;
+            gameManager.dragModeAcivated = false;
+            gameManager.dragTimer = gameManager.dragCooldown;
         }
     }
 
@@ -283,7 +324,7 @@ public class ChefBehavior : AgentBehavior
     //Find the furniture required to do the current recipe's step, if this step require to find an ingredient, it will be a parameter
     public Furniture findFurniture(FurnitureType furnitureType, Ingredient ingredient = null)
     {
-        Furniture[] surrondingFurnitures = FindObjectsOfType<Furniture>();
+        surrondingFurnitures = FindObjectsOfType<Furniture>();
         for (int i = 0; i < surrondingFurnitures.Length; i++)
         {
             if (surrondingFurnitures[i].furnitureType == furnitureType && !surrondingFurnitures[i].isUsed)
@@ -316,5 +357,22 @@ public class ChefBehavior : AgentBehavior
     public void correctBehavior()
     {
         isFailling = !isFailling;
+        //Change icon on workbench
+        if(isFailling)
+        {
+            if ((furnitureToInteractWith as Workbench) != null && currentStep.wrongIngrdientOutput.Length > 0)
+            {
+                (furnitureToInteractWith as Workbench).iconOutputIngredient.sprite = currentStep.wrongIngrdientOutput[0].icon;
+            }
+        }
+        else
+        {
+            (furnitureToInteractWith as Workbench).iconOutputIngredient.sprite = currentStep.ingredientOutput.icon;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
     }
 }

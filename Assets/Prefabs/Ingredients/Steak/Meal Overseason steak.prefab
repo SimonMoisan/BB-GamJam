@@ -46,5 +46,6 @@ MonoBehaviour:
   name: Overseason Steak
   icon: {fileID: 21300000, guid: 0158ed107fcd38e40ba4bdf6c71cd243, type: 3}
   mealQuality: 1
+  mealValue: -10
   recipe: {fileID: 11400000, guid: 82089655f7734074183ad59b103e5e43, type: 2}
   ingredientsInMeal: []

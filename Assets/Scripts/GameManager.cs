@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,27 +9,83 @@ public class GameManager : MonoBehaviour
     public ChefBehavior[] cookers;
     public AgentBehavior[] waiters;
     public GameLoop gameLoop;
+    public Canvas cursor;
+    public Image cheerCooldownGauge;
+    public Image dragCooldownGauge;
+    public bool dragModeAcivated;
+    public Camera camera;
 
-    public int moodShootPenalty;
-    public int moodDragPenalty;
-    public int moodCheerBonus;
+    [Header("Action timers :")]
+    public float cheerCooldown;
+    public float cheerTimer;
+    public float dragCooldown;
+    public float dragTimer;
+
+    [Header("Mood values :")]
+    public float moodShootPenalty;
+    public float moodDragPenalty;
+    public float moodCheerBonus;
 
     private void Start()
     {
         cookers = FindObjectsOfType<ChefBehavior>();
         gameLoop = FindObjectOfType<GameLoop>();
+        camera = FindObjectOfType<Camera>();
+    }
+
+    public void Update()
+    {
+        cheerCooldownGauge.fillAmount = cheerTimer / cheerCooldown;
+        dragCooldownGauge.fillAmount = dragTimer / dragCooldown;
+
+        if(cheerTimer <= 0)
+        {
+            cheerTimer = 0;
+        }
+        else
+        {
+            cheerTimer -= Time.deltaTime;
+        }
+
+        if (dragTimer <= 0)
+        {
+            dragTimer = 0;
+        }
+        else
+        {
+            dragTimer -= Time.deltaTime;
+        }
+
+        //Cursor follow mouse
+        Vector3 newPosition = new Vector3(camera.ScreenToWorldPoint(Input.mousePosition).x, camera.ScreenToWorldPoint(Input.mousePosition).y, 0);
+        cursor.transform.position = newPosition;
     }
 
     public void shootAction()
     {
         if(cookerSelected != null && cookerSelected.actor.chefState == ChefState.Working)
         {
+            Debug.Log("Shoot");
+            //Can do action
             if(cookerSelected.actualMood > 0)
             {
-
+                cookerSelected.correctBehavior();
+                //Remove mood
+                if(cookerSelected.actualMood >= moodShootPenalty)
+                {
+                    cookerSelected.actualMood -= moodShootPenalty;
+                }
+                else
+                {
+                    cookerSelected.actualMood = 0;
+                }
+            }
+            else
+            {
+                //Go to pause
             }
             
-            resetSelection();
+            //resetSelection();
         }
     }
 
@@ -36,8 +93,24 @@ public class GameManager : MonoBehaviour
     {
         if (cookerSelected != null)
         {
-            cookerSelected.actualMood -= moodCheerBonus;
-            resetSelection();
+            if (cookerSelected.actualMood + moodCheerBonus < cookerSelected.moodMax)
+            {
+                cookerSelected.actualMood += moodCheerBonus;
+            }
+            else
+            {
+                cookerSelected.actualMood = cookerSelected.moodMax;
+            }
+            //resetSelection();
+            cheerTimer = cheerCooldown;
+        }
+    }
+
+    public void enableDragMode()
+    {
+        if(dragTimer <= 0)
+        {
+            dragModeAcivated = true;
         }
     }
 

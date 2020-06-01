@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameLoop : MonoBehaviour
 {
@@ -8,7 +9,8 @@ public class GameLoop : MonoBehaviour
     public float gameDuration;
     public float gameTimer;
     public bool gameIsRunning;
-    public int money;
+    public int actualMoney;
+    public int maxMoney;
     public int[] moneyJalons; //Bronze, Silver, Gold, etc...
     public int commandsSuccesful;
     public int commandsFailed;
@@ -24,6 +26,7 @@ public class GameLoop : MonoBehaviour
     [Header("Associated objects :")]
     public Transform commandParent;
     public GameManager gameManager;
+    public Image moneyGauge; 
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +44,7 @@ public class GameLoop : MonoBehaviour
         {
             timerManagement();
         }
+        moneyGauge.fillAmount = actualMoney / maxMoney;
     }
 
     public void startGame()
