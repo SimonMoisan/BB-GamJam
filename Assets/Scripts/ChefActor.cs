@@ -24,4 +24,9 @@ public class ChefActor : Actor
     {
         anim.SetBool("Holding", holding);
     }
+
+    private void OnMouseDown()
+    {
+        anim.SetBool("Working", working);
+    }
 }

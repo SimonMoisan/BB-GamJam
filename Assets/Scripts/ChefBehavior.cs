@@ -135,10 +135,12 @@ public class ChefBehavior : AgentBehavior
                 ingredientIcon.enabled = false;
                 gaugeIcon.enabled = false;
                 actor.SetHolding(false);
+                
                 //Reset recipe and recipe step
                 recipeToDo = null;
                 recipeStepIndex = 0;
                 currentStep = null;
+                
                 actor.chefState = ChefState.Idle;
             }
         }
