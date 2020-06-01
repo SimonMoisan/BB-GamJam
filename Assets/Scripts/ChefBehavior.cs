@@ -171,6 +171,7 @@ public class ChefBehavior : AgentBehavior
                 {
                     targetPoint = furnitureToInteractWith.accessPoint;
                     furnitureToInteractWith.isUsed = true;
+                    furnitureToInteractWith.agentUsingFurniture = this;
                     actor.chefState = ChefState.GoToFurniture;
                 }
             }
