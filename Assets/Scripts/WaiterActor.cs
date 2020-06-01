@@ -45,7 +45,7 @@ public class WaiterActor : Actor
             CallWaiter();
         }
         /***************************************/
-        if (searchingMeal && aIPath.reachedDestination)
+        else if (searchingMeal && aIPath.reachedDestination)
         {
             index++;
             if (index < pathChoosen.transform.childCount)
@@ -58,6 +58,9 @@ public class WaiterActor : Actor
                 Debug.Log("You have arrived");
                 searchingMeal = false;
                 bringMeal = true;
+                agent.carriedIngredient = chariot.mealsToServe[0];
+                agent.ingredientIcon.sprite = agent.carriedIngredient.icon;
+                agent.ingredientIcon.enabled = true;
                 chariot.mealsToServe.RemoveAt(0);
                 pathChoosen = (Random.Range(0, 2) == 0) ? pathA : pathB;
                 index = pathChoosen.transform.childCount - 1;
@@ -129,6 +132,8 @@ public class WaiterActor : Actor
         }
         temp.a = 0;
         sprite.color = temp;
+        agent.carriedIngredient = null;
+        agent.ingredientIcon.enabled = false;
         bringMeal = false;
     }
 }

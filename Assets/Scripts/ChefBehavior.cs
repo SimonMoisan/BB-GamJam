@@ -102,7 +102,11 @@ public class ChefBehavior : AgentBehavior
                 {
                     targetPoint = furnitureToInteractWith.accessPoint;
                     furnitureToInteractWith.isUsed = true;
+<<<<<<< Updated upstream
                     destinationSetter.target = targetPoint;
+=======
+                    furnitureToInteractWith.agentUsingFurniture = this;
+>>>>>>> Stashed changes
                     actor.chefState = ChefState.GoToFurniture;
                 }
             }
@@ -132,7 +136,7 @@ public class ChefBehavior : AgentBehavior
     public void doNextRecipeStep()
     {
         currentStep = recipeToDo.recipeSteps[recipeStepIndex];
-
+        gaugeIcon.enabled = false;
         //Find furniture to use for the next step of a recipe
         furnitureToInteractWith = findFurniture(currentStep.workbenchUsed);
         if (furnitureToInteractWith == null)
@@ -159,7 +163,12 @@ public class ChefBehavior : AgentBehavior
         {
             targetPoint = furnitureToInteractWith.accessPoint;
             furnitureToInteractWith.isUsed = true;
+<<<<<<< Updated upstream
             destinationSetter.target = targetPoint;
+=======
+            furnitureToInteractWith.agentUsingFurniture = this;
+            gaugeIcon.enabled = false;
+>>>>>>> Stashed changes
             actor.chefState = ChefState.Deliver;
         }
     }
