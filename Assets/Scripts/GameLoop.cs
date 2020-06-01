@@ -72,10 +72,11 @@ public class GameLoop : MonoBehaviour
                 Command newCommandPrefab = chooseRandomCommand();
                 Command commandGO = Instantiate(newCommandPrefab, commandParent);
 
-                //Add command to its command slot
+                //Add command to its command slot and vice versa
                 actualCommands.Add(commandGO);
                 CommandSlot usedCommandSlot = commandSlots[actualCommands.Count - 1];
                 usedCommandSlot.command = commandGO;
+                commandGO.commandSlot = usedCommandSlot;
 
                 //Set up sprite and gauge
                 usedCommandSlot.mealIcon.sprite = commandGO.recipe.mealSprite;

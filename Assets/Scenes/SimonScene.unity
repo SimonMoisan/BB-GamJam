@@ -6676,6 +6676,11 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1336550069}
+    - target: {fileID: 6306028546892816353, guid: 23b955272bb932144a5e06ce98b8eb3e,
+        type: 3}
+      propertyPath: failPercentage
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6306028546892816355, guid: 23b955272bb932144a5e06ce98b8eb3e,
         type: 3}
       propertyPath: m_Name
@@ -6685,6 +6690,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8989412970560626651, guid: 23b955272bb932144a5e06ce98b8eb3e,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 1.5462778
+      objectReference: {fileID: 0}
+    - target: {fileID: 8989412970560626651, guid: 23b955272bb932144a5e06ce98b8eb3e,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 3.796821
+      objectReference: {fileID: 0}
+    - target: {fileID: 8989412970560626651, guid: 23b955272bb932144a5e06ce98b8eb3e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23b955272bb932144a5e06ce98b8eb3e, type: 3}
