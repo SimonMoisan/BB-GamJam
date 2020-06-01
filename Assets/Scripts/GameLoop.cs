@@ -8,7 +8,8 @@ public class GameLoop : MonoBehaviour
     public float gameDuration;
     public float gameTimer;
     public bool gameIsRunning;
-    public int money;
+    public int actualMoney;
+    public int maxMoney;
     public int[] moneyJalons; //Bronze, Silver, Gold, etc...
     public int commandsSuccesful;
     public int commandsFailed;
