@@ -76,25 +76,32 @@ public class GameLoop : MonoBehaviour
 
                 //Add command to its command slot and vice versa
                 actualCommands.Add(commandGO);
-                CommandSlot usedCommandSlot = commandSlots[actualCommands.Count - 1];
-                usedCommandSlot.command = commandGO;
-                commandGO.commandSlot = usedCommandSlot;
-
-                //Set up sprite and gauge
-                usedCommandSlot.mealIcon.sprite = commandGO.recipe.mealSprite;
-                usedCommandSlot.mealIcon.enabled = true;
-                usedCommandSlot.durationGauge.enabled = true;
-
-                //Display command slot
-                usedCommandSlot.enabled = true;
-
-                //Enable selector if an agent is selected
-                if(gameManager.cookerSelected != null)
+                for (int i = 0; i < commandSlots.Length; i++)
                 {
-                    usedCommandSlot.selector.enabled = true;
-                }
+                    if(commandSlots[i].command != null)
+                    {
+                        CommandSlot usedCommandSlot = commandSlots[actualCommands.Count - 1];
+                        usedCommandSlot.command = commandGO;
+                        commandGO.commandSlot = usedCommandSlot;
 
-                delayBtwCommandTimer = delayBtwCommand + Random.Range(-randomDelayFactor, randomDelayFactor);
+                        //Set up sprite and gauge
+                        usedCommandSlot.mealIcon.sprite = commandGO.recipe.mealSprite;
+                        usedCommandSlot.mealIcon.enabled = true;
+                        usedCommandSlot.durationGauge.enabled = true;
+
+                        //Display command slot
+                        usedCommandSlot.enabled = true;
+
+                        //Enable selector if an agent is selected
+                        if (gameManager.cookerSelected != null)
+                        {
+                            usedCommandSlot.selector.enabled = true;
+                        }
+
+                        delayBtwCommandTimer = delayBtwCommand + Random.Range(-randomDelayFactor, randomDelayFactor);
+                        break;
+                    }
+                }             
             }
             else
             {

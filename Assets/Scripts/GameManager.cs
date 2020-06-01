@@ -20,19 +20,22 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void shootAction(int actorId)
+    public void shootAction()
     {
-        cookerSelected = null;
+        if(cookerSelected != null && cookerSelected.actor.chefState == ChefState.Working)
+        {
+
+            resetSelection();
+        }
     }
 
-    public void slapeAction(int actorId)
+    public void cheerAction()
     {
-        cookerSelected = null;
-    }
+        if (cookerSelected != null)
+        {
 
-    public void stopAction(int actorId)
-    {
-        cookerSelected = null;
+            resetSelection();
+        }
     }
 
     public void selectCooker(ChefBehavior chefSelected)
@@ -54,6 +57,18 @@ public class GameManager : MonoBehaviour
             {
                 gameLoop.commandSlots[i].selector.enabled = true;
             }
+        }
+    }
+
+    public void resetSelection()
+    {
+        //Deselect cooker
+        cookerSelected.selector.enabled = false;
+        cookerSelected = null;
+        //Deselec commands
+        for (int i = 0; i < gameLoop.commandSlots.Length; i++)
+        {
+            gameLoop.commandSlots[i].selector.enabled = false;
         }
     }
 }
