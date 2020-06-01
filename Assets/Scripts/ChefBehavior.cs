@@ -248,6 +248,7 @@ public class ChefBehavior : AgentBehavior
             if (actor.chefState != ChefState.Working)
             {
                 positionBeforeDrag = transform.position;
+                actor.SetDrag(true);
                 isDragged = true;
             }
         }
@@ -259,6 +260,7 @@ public class ChefBehavior : AgentBehavior
         
         if(gameManager.dragModeAcivated)
         {
+            actor.SetDrag(false);
             isDragged = false;
             gameManager.dragModeAcivated = false;
             gameManager.dragTimer = gameManager.dragCooldown;

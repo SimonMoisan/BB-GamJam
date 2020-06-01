@@ -27,9 +27,9 @@ public class SoundParameters : MonoBehaviour
     {
         volumeEffect = newVolume;
         Audio.AudioManager am;
-        if (am = FindObjectOfType<Audio.AudioManager>())
+        if ((am = FindObjectOfType<Audio.AudioManager>()) != null)
         {
-            OnVolumeMusicChanged(volumeEffect);
+            am.OnVolumeChange(volumeEffect);
         }
     }
 
@@ -37,9 +37,9 @@ public class SoundParameters : MonoBehaviour
     {
         volumeMusic = newVolume;
         BGMusic bg;
-        if (bg = FindObjectOfType<BGMusic>())
+        if ((bg = FindObjectOfType<BGMusic>()) != null)
         {
-            OnVolumeMusicChanged(volumeMusic);
+            bg.OnVolumeChange(volumeMusic);
         }
     }
 }

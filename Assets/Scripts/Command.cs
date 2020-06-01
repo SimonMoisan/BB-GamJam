@@ -53,7 +53,7 @@ public class Command : MonoBehaviour
         {
             gameLoop.commandsSuccesful++;
         }
-
+        gameLoop.actualMoney += meal.mealValue;
         commandSlot.mealIcon.sprite = null;
         commandSlot.mealIcon.enabled = false;
         commandSlot.durationGauge.enabled = false;

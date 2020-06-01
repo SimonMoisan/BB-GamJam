@@ -24,4 +24,9 @@ public class ChefActor : Actor
     {
         anim.SetBool("Holding", holding);
     }
+
+    public void SetDrag(bool drag)
+    {
+        anim.SetBool("Drag", drag);
+    }
 }
