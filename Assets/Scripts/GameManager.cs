@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public Image cheerCooldownGauge;
     public Image dragCooldownGauge;
     public bool dragModeAcivated;
+    public Camera camera;
 
     [Header("Action timers :")]
     public float cheerCooldown;
@@ -29,6 +30,7 @@ public class GameManager : MonoBehaviour
     {
         cookers = FindObjectsOfType<ChefBehavior>();
         gameLoop = FindObjectOfType<GameLoop>();
+        camera = FindObjectOfType<Camera>();
     }
 
     public void Update()
@@ -53,6 +55,10 @@ public class GameManager : MonoBehaviour
         {
             dragTimer -= Time.deltaTime;
         }
+
+        //Cursor follow mouse
+        Vector3 newPosition = new Vector3(camera.ScreenToWorldPoint(Input.mousePosition).x, camera.ScreenToWorldPoint(Input.mousePosition).y, 0);
+        cursor.transform.position = newPosition;
     }
 
     public void shootAction()
