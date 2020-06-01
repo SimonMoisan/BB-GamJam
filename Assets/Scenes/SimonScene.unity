@@ -1087,6 +1087,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5db05e0414e8dae428f74aa78bd44929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  commandSlotId: 4
   mealIcon: {fileID: 911835974}
   durationGauge: {fileID: 1706399284}
   gameLoop: {fileID: 1336550068}
@@ -1135,6 +1136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5db05e0414e8dae428f74aa78bd44929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  commandSlotId: 2
   mealIcon: {fileID: 107384085}
   durationGauge: {fileID: 2062240907}
   gameLoop: {fileID: 1336550068}
@@ -1246,7 +1248,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd9be49d6855bd848a59038de6e6be36, type: 3}
   m_Name: 
@@ -1513,6 +1515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5db05e0414e8dae428f74aa78bd44929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  commandSlotId: 1
   mealIcon: {fileID: 693066448}
   durationGauge: {fileID: 916612501}
   gameLoop: {fileID: 1336550068}
@@ -2000,6 +2003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5db05e0414e8dae428f74aa78bd44929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  commandSlotId: 3
   mealIcon: {fileID: 723939655}
   durationGauge: {fileID: 176954002}
   gameLoop: {fileID: 1336550068}
@@ -4026,6 +4030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5db05e0414e8dae428f74aa78bd44929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  commandSlotId: 0
   mealIcon: {fileID: 0}
   durationGauge: {fileID: 0}
   gameLoop: {fileID: 0}
@@ -6503,6 +6508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5db05e0414e8dae428f74aa78bd44929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  commandSlotId: 0
   mealIcon: {fileID: 1662887593}
   durationGauge: {fileID: 1182208733}
   gameLoop: {fileID: 1336550068}

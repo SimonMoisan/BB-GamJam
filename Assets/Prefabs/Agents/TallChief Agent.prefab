@@ -262,6 +262,7 @@ GameObject:
   - component: {fileID: 6231010123116996545}
   - component: {fileID: 6306028546892816353}
   - component: {fileID: 6306028546892816352}
+  - component: {fileID: 8989412970560626651}
   m_Layer: 0
   m_Name: TallChief Agent
   m_TagString: Untagged
@@ -449,9 +450,10 @@ MonoBehaviour:
   carriedIngredient: {fileID: 0}
   ingredientIcon: {fileID: 717988699306657353}
   gaugeIcon: {fileID: 8145905225842608465}
-  failFactor: 0
+  failPercentage: 0
   workingDuration: 0
   workingTimer: 0
+  isFailling: 0
   actor: {fileID: 6306028546892816352}
   recipeToDo: {fileID: 0}
   currentStep: {fileID: 0}
@@ -480,4 +482,19 @@ MonoBehaviour:
   agent: {fileID: 6306028546892816353}
   gameManager: {fileID: 0}
   chefState: 0
-  isFailling: 0
+--- !u!70 &8989412970560626651
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6306028546892816355}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.03267253, y: 1.5462778}
+  m_Size: {x: 0.86764574, y: 3.796821}
+  m_Direction: 0

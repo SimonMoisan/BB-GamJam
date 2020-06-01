@@ -29,22 +29,22 @@ public class CameraController : MonoBehaviour
 
         if (doMovement)
         {
-            if ((Input.GetKey("z") || Input.mousePosition.y >= Screen.height - panBoarderThickness) && transform.position.y < maxY)
+            if ((Input.GetKey("z") /*|| Input.mousePosition.y >= Screen.height - panBoarderThickness*/) && transform.position.y < maxY)
             {
                 transform.Translate(Vector3.up * panSpeed * Time.deltaTime, Space.World);
             }
 
-            if ((Input.GetKey("s") || Input.mousePosition.y <= panBoarderThickness) && transform.position.y >= minY)
+            if ((Input.GetKey("s") /*|| Input.mousePosition.y <= panBoarderThickness*/) && transform.position.y >= minY)
             {
                 transform.Translate(Vector3.down * panSpeed * Time.deltaTime, Space.World);
             }
 
-            if ((Input.GetKey("q") || Input.mousePosition.x <= panBoarderThickness) && transform.position.x >= minX)
+            if ((Input.GetKey("q") /*|| Input.mousePosition.x <= panBoarderThickness*/) && transform.position.x >= minX)
             {
                 transform.Translate(Vector3.left * panSpeed * Time.deltaTime, Space.World);
             }
 
-            if ((Input.GetKey("d") || Input.mousePosition.x >= Screen.width - panBoarderThickness) && transform.position.x < maxX)
+            if ((Input.GetKey("d") /*|| Input.mousePosition.x >= Screen.width - panBoarderThickness*/) && transform.position.x < maxX)
             {
                 transform.Translate(Vector3.right * panSpeed * Time.deltaTime, Space.World);
             }

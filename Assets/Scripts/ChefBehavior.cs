@@ -35,21 +35,24 @@ public class ChefBehavior : AgentBehavior
                     (furnitureToInteractWith as Workbench).progressionGauge.enabled = true;
                 }
 
-                //See if the work will success or fail
-                int failRatio = Random.Range(0, 100);
-                if(failRatio > failPercentage)
+                //See if the work (only for workbench and for step with potential fail) will success or fail
+                if(furnitureToInteractWith is Workbench && currentStep.wrongIngrdientOutput.Length > 0)
                 {
-                    isFailling = true;
-                    //Set up timer
-                    workingDuration = currentStep.wrongDuration;
-                    workingTimer = workingDuration;
-                }
-                else
-                {
-                    isFailling = false;
-                    //Set up timer
-                    workingDuration = currentStep.duration;
-                    workingTimer = workingDuration;
+                    int failRatio = Random.Range(0, 100);
+                    if (failRatio < failPercentage)
+                    {
+                        isFailling = true;
+                        //Set up timer
+                        workingDuration = currentStep.wrongDuration;
+                        workingTimer = workingDuration;
+                    }
+                    else
+                    {
+                        isFailling = false;
+                        //Set up timer
+                        workingDuration = currentStep.duration;
+                        workingTimer = workingDuration;
+                    }
                 }
 
                 actor.chefState = ChefState.Working;
@@ -72,11 +75,11 @@ public class ChefBehavior : AgentBehavior
                 //Get new ingredient at the end of this step (fail or succes)
                 if(isFailling)
                 {
-                    carriedIngredient = currentStep.ingredientOutput;
+                    carriedIngredient = currentStep.wrongIngrdientOutput[0];
                 }
                 else
                 {
-                    carriedIngredient = currentStep.wrongIngrdientOutput[0];
+                    carriedIngredient = currentStep.ingredientOutput;
                 }
                 ingredientIcon.sprite = carriedIngredient.icon;
                 ingredientIcon.enabled = true;
