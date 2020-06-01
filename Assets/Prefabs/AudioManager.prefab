@@ -56,7 +56,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: CommandSuceed
+  - name: CommandSucceed
     clip: {fileID: 8300000, guid: 556ac9126c9efe74c8a7782be131f4ee, type: 3}
     volume: 1
     pitch: 1
@@ -150,5 +150,6 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 7db15302e1bf5074a980fdf2079af40a, type: 3}
     volume: 1
     pitch: 1
-    loop: 0
+    loop: 1
     source: {fileID: 0}
+  volume: 0.5

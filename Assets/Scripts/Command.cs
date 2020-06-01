@@ -32,6 +32,7 @@ public class Command : MonoBehaviour
     {
         gameLoop.actualCommands.Remove(this);
         gameLoop.commandsFailed++;
+        Audio.AudioManager.Play("CommandFailed");
 
         //Reset command slot
         commandSlot.selector.enabled = false;
@@ -48,9 +49,11 @@ public class Command : MonoBehaviour
         if (meal.mealQuality == MealQuality.Failed)
         {
             gameLoop.commandsFailed++;
+            Audio.AudioManager.Play("CommandFailed");
         }
         else
         {
+            Audio.AudioManager.Play("CommandSucceed");
             gameLoop.commandsSuccesful++;
         }
         gameLoop.actualMoney += meal.mealValue;
