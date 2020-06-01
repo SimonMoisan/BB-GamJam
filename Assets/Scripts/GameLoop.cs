@@ -78,7 +78,7 @@ public class GameLoop : MonoBehaviour
                 actualCommands.Add(commandGO);
                 for (int i = 0; i < commandSlots.Length; i++)
                 {
-                    if(commandSlots[i].command != null)
+                    if(commandSlots[i].command == null)
                     {
                         CommandSlot usedCommandSlot = commandSlots[actualCommands.Count - 1];
                         usedCommandSlot.command = commandGO;
