@@ -41,4 +41,23 @@ public class Command : MonoBehaviour
 
         Destroy(gameObject);
     }
+
+    public void commandDelivered( Meal meal)
+    {
+        gameLoop.actualCommands.Remove(this);
+        if (meal.mealQuality == MealQuality.Failed)
+        {
+            gameLoop.commandsFailed++;
+        }
+        else
+        {
+            gameLoop.commandsSuccesful++;
+        }
+
+        commandSlot.mealIcon.sprite = null;
+        commandSlot.mealIcon.enabled = false;
+        commandSlot.durationGauge.enabled = false;
+
+        Destroy(gameObject);
+    }
 }

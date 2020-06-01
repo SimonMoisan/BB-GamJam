@@ -9,21 +9,23 @@ public class WaiterActor : Actor
     [Header("Path")]
     public GameObject pathA;
     public GameObject pathB;
+    public GameObject pathChoosen;
+    public int index;
     AIPath aIPath;
+
+    [Header("Entry")]
+    public float speedApparition = 1f;
+    public bool visible = false;
+    SpriteRenderer sprite;
+    Color color;
+
+    [Header("Delivery")]
+    public FoodDisplayer chariot;
+    public GameLoop gameLoop;
     [SerializeField]
     bool searchingMeal = false;
     [SerializeField]
     bool bringMeal = false;
-    public GameObject pathChoosen;
-    public int index;
-
-    [Header("Entry")]
-    public float speedApparition = 1f;
-    SpriteRenderer sprite;
-    Color color;
-
-    [Header("Chariot")]
-    public FoodDisplayer chariot;
 
     private void Start()
     {
@@ -34,18 +36,17 @@ public class WaiterActor : Actor
         sprite = GetComponent<SpriteRenderer>();
         color = sprite.color;
         sprite.color = new Color(0, 0, 0, 0); //Hidding the character
+        gameLoop = FindObjectOfType<GameLoop>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        /************** Temporary **************/
-        if (chariot.mealsToServe.Count > 0 && !bringMeal && !searchingMeal)
+        if (chariot.mealsToServe.Count > 0 && !bringMeal && !searchingMeal && !visible)
         {
             CallWaiter();
         }
-        /***************************************/
-        if (searchingMeal && aIPath.reachedDestination)
+        else if (searchingMeal && aIPath.reachedDestination)
         {
             index++;
             if (index < pathChoosen.transform.childCount)
@@ -58,6 +59,9 @@ public class WaiterActor : Actor
                 Debug.Log("You have arrived");
                 searchingMeal = false;
                 bringMeal = true;
+                agent.carriedIngredient = chariot.mealsToServe[0];
+                agent.ingredientIcon.sprite = agent.carriedIngredient.icon;
+                agent.ingredientIcon.enabled = true;
                 chariot.mealsToServe.RemoveAt(0);
                 pathChoosen = (Random.Range(0, 2) == 0) ? pathA : pathB;
                 index = pathChoosen.transform.childCount - 1;
@@ -68,13 +72,15 @@ public class WaiterActor : Actor
         else if (bringMeal && aIPath.reachedDestination)
         {
             index--;
-            if (index >= 0)
+            if (index >= 0) //Path unfinished
             {
                 Vector3 target = pathChoosen.transform.GetChild(index).position;
                 MoveToTarget(target);
             }
             else
-            {
+            { //We deliver the meal at the end of the coroutine
+                bringMeal = false;
+                Deliver();
                 StartCoroutine("Disappear");
             }
         }
@@ -102,6 +108,30 @@ public class WaiterActor : Actor
         }
     }
 
+    private void Deliver()
+    {
+        Meal meal = (agent.carriedIngredient as Meal);
+        Command commandToDeliver = null;
+        float time = float.MaxValue;
+        for (int i = 0; i < gameLoop.actualCommands.Count; i++)
+        {
+            if (gameLoop.actualCommands[i].recipe == meal.recipe)
+            {
+                if (time > gameLoop.actualCommands[i].actualTime)
+                {
+                    time = gameLoop.actualCommands[i].actualTime;
+                    commandToDeliver = gameLoop.actualCommands[i];
+                }
+            }
+        }
+        if (commandToDeliver != null)
+        {
+            commandToDeliver.commandDelivered(meal);
+        }
+        agent.carriedIngredient = null;
+        agent.ingredientIcon.enabled = false;
+    }
+
     private IEnumerator Appear()
     {
         transform.position = pathChoosen.transform.GetChild(0).position;
@@ -115,6 +145,7 @@ public class WaiterActor : Actor
         }
         temp.a = 1;
         sprite.color = temp;
+        visible = true;
     }
 
     private IEnumerator Disappear()
@@ -129,7 +160,7 @@ public class WaiterActor : Actor
         }
         temp.a = 0;
         sprite.color = temp;
-        bringMeal = false;
+        visible = false;
     }
 }
 

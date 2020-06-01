@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6293341708443458211}
   - component: {fileID: 2891445248645343228}
   m_Layer: 0
-  m_Name: Command _ Steak
+  m_Name: Command Steak
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,3 +47,5 @@ MonoBehaviour:
   timeToPerform: 100
   actualTime: 0
   recipe: {fileID: 11400000, guid: 82089655f7734074183ad59b103e5e43, type: 2}
+  commandSlot: {fileID: 0}
+  gameLoop: {fileID: 0}

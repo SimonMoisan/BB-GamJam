@@ -48,7 +48,7 @@ MonoBehaviour:
   timeToPerform: 80
   actualTime: 0
   recipe: {fileID: 11400000, guid: db95300b145c0f2489d5da8b5f9f518b, type: 2}
-  sprite: {fileID: 0}
+  commandSlot: {fileID: 0}
   gameLoop: {fileID: 0}
 --- !u!212 &-8183426473470045657
 SpriteRenderer:
