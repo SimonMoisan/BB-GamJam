@@ -45,23 +45,7 @@ public class ChefBehavior : AgentBehavior
             destinationSetter.target = targetPoint;
             if (transform.position == targetPoint.position) //Is in front of the furniture
             {
-                
-                //Set up workbench gauge and icon
-                if(furnitureToInteractWith as Workbench != null)
-                {
-                    if(isFailling)
-                    {
-                        (furnitureToInteractWith as Workbench).iconOutputIngredient.sprite = currentStep.wrongIngrdientOutput[0].icon;
-                        (furnitureToInteractWith as Workbench).progressionGauge.color = Color.red;
-                    }
-                    else
-                    {
-                        (furnitureToInteractWith as Workbench).iconOutputIngredient.sprite = currentStep.ingredientOutput.icon;
-                    }
-                    
-                    (furnitureToInteractWith as Workbench).iconOutputIngredient.enabled = true;
-                    (furnitureToInteractWith as Workbench).progressionGauge.enabled = true;
-                }
+               
 
                 //See if the work (only for workbench and for step with potential fail) will success or fail
                 if(furnitureToInteractWith is Workbench && currentStep.wrongIngrdientOutput.Length > 0)
@@ -81,6 +65,23 @@ public class ChefBehavior : AgentBehavior
                         workingDuration = currentStep.duration;
                         workingTimer = workingDuration;
                     }
+                }
+
+                //Set up workbench gauge and icon
+                if (furnitureToInteractWith as Workbench != null)
+                {
+                    if (isFailling)
+                    {
+                        (furnitureToInteractWith as Workbench).iconOutputIngredient.sprite = currentStep.wrongIngrdientOutput[0].icon;
+                        (furnitureToInteractWith as Workbench).progressionGauge.color = Color.red;
+                    }
+                    else
+                    {
+                        (furnitureToInteractWith as Workbench).iconOutputIngredient.sprite = currentStep.ingredientOutput.icon;
+                    }
+
+                    (furnitureToInteractWith as Workbench).iconOutputIngredient.enabled = true;
+                    (furnitureToInteractWith as Workbench).progressionGauge.enabled = true;
                 }
 
                 //Play sound
