@@ -9,9 +9,13 @@ public class ChefBehavior : AgentBehavior
     [Range(0, 99)] public int failPercentage; //percentage chance to do the wrong thing
     public float workingDuration;
     public float workingTimer;
-    public bool isFailling;
     public int moodMax;
     public int actualMood;
+    public Vector3 positionBeforeDrag;
+
+    [Header("Agent states :")]
+    public bool isFailling;
+    public bool isDragged;
 
     [Header("Associated objects chef :")]
     public ChefActor actor;
@@ -21,6 +25,7 @@ public class ChefBehavior : AgentBehavior
     public Furniture furnitureToInteractWith;
     public GameManager gameManager;
     public Image selector;
+    public Camera camera;
 
     private void Start()
     {
@@ -177,6 +182,11 @@ public class ChefBehavior : AgentBehavior
                 recipeToDo = null;
                 recipeStepIndex = 0;
                 currentStep = null;
+
+                if(isFailling)
+                {
+                    isFailling = false;
+                }
                 
                 actor.chefState = ChefState.Idle;
             }
@@ -211,17 +221,29 @@ public class ChefBehavior : AgentBehavior
             }
         }
 
-        //Select agent
-        if(Input.GetMouseButtonDown(0))
+        if(isDragged)
         {
-            gameManager.selectCooker(this);
+            Vector3 newPosition = new Vector3(camera.ScreenToWorldPoint(Input.mousePosition).x, camera.ScreenToWorldPoint(Input.mousePosition).y, 0);
+            transform.position = newPosition;
         }
+    }
 
-        //Drag agent
-        if(Input.GetMouseButtonDown(1))
-        {
+    private void OnMouseDown()
+    {
+        gameManager.selectCooker(this);
+    }
 
-        }
+    private void OnMouseDrag()
+    {
+        positionBeforeDrag = transform.position;
+        actor.canMove = false;
+        isDragged = true;
+    }
+
+    private void OnMouseUp()
+    {
+        actor.canMove = true;
+        isDragged = false;
     }
 
     public void addNewRecipe(Recipe recipe)
@@ -316,5 +338,22 @@ public class ChefBehavior : AgentBehavior
     public void correctBehavior()
     {
         isFailling = !isFailling;
+        //Change icon on workbench
+        if(isFailling)
+        {
+            if ((furnitureToInteractWith as Workbench) != null && currentStep.wrongIngrdientOutput.Length > 0)
+            {
+                (furnitureToInteractWith as Workbench).iconOutputIngredient.sprite = currentStep.wrongIngrdientOutput[0].icon;
+            }
+        }
+        else
+        {
+            (furnitureToInteractWith as Workbench).iconOutputIngredient.sprite = currentStep.ingredientOutput.icon;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
     }
 }
