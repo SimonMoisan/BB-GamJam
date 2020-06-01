@@ -81,7 +81,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0f3c95e1eef98ba42b76848580b09396, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -112,7 +112,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!114 &7316498778189958189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,13 +125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14adcd9b59b3ac044a9567192f718f53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionTime: 0
   isUsed: 0
   furnitureType: 0
-  accessPoint: {fileID: 0}
+  accessPoint: {fileID: 7316498778091644651}
   agentUsingFurniture: {fileID: 0}
-  numberInputSlots: 1
-  ingredientInputSlots:
-  - {fileID: 0}
-  ingredientOutput: {fileID: 0}
-  mealOutput: {fileID: 0}
+  progressionGauge: {fileID: 0}
