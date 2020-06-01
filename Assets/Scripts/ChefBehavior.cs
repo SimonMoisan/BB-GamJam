@@ -351,7 +351,6 @@ public class ChefBehavior : AgentBehavior
         else
         {
             targetPoint = furnitureToInteractWith.accessPoint;
-            furnitureToInteractWith.isUsed = true;
             furnitureToInteractWith.agentUsingFurniture = this;
             actor.chefState = ChefState.Deliver;
         }
@@ -411,6 +410,7 @@ public class ChefBehavior : AgentBehavior
         else
         {
             (furnitureToInteractWith as Workbench).iconOutputIngredient.sprite = currentStep.ingredientOutput.icon;
+
         }
     }
 

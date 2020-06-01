@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Shoot");
             Audio.AudioManager.Play("Slap");
+            gameLoop.changePortrait(3);
             cookerSelected.actor.SetSlap();
             //Can do action
             if(cookerSelected.actualMood > 0)
