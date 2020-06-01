@@ -72,6 +72,7 @@ public class ChefBehavior : AgentBehavior
             {
                 FoodDisplayer chariot = (furnitureToInteractWith as FoodDisplayer);
                 chariot.mealsToServe.Add(carriedIngredient as Meal);
+                chariot.isUsed = false;
                 carriedIngredient = null;
                 actor.SetHolding(false);
                 actor.chefState = ChefState.Idle;

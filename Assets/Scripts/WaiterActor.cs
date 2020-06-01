@@ -75,7 +75,6 @@ public class WaiterActor : Actor
             }
             else
             {
-                bringMeal = false;
                 StartCoroutine("Disappear");
             }
         }
@@ -130,6 +129,7 @@ public class WaiterActor : Actor
         }
         temp.a = 0;
         sprite.color = temp;
+        bringMeal = false;
     }
 }
 
