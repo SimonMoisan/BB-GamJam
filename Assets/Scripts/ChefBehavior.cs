@@ -65,6 +65,23 @@ public class ChefBehavior : AgentBehavior
                     }
                 }
 
+                //Play sound
+                switch (currentStep.workbenchUsed)
+                {
+                    case FurnitureType.CuttingTable:
+                        Audio.AudioManager.Play("CutPotatoes");
+                        break;
+                    case FurnitureType.DeepFryer:
+                        Audio.AudioManager.Play("Frying");
+                        break;
+                    case FurnitureType.FryPan:
+                        Audio.AudioManager.Play("Frying");
+                        break;
+                    case FurnitureType.SeasonTable:
+                        Audio.AudioManager.Play("Salt");
+                        break;
+                }
+
                 actor.chefState = ChefState.Working;
                 actor.SetWorking(true);
             }
@@ -75,6 +92,23 @@ public class ChefBehavior : AgentBehavior
         {
             if(workingTimer <= 0) //Finish work and go to next step
             {
+                //Cut sound
+                switch (currentStep.workbenchUsed)
+                {
+                    case FurnitureType.CuttingTable:
+                        Audio.AudioManager.Stop("CutPotatoes");
+                        break;
+                    case FurnitureType.DeepFryer:
+                        Audio.AudioManager.Stop("Frying");
+                        break;
+                    case FurnitureType.FryPan:
+                        Audio.AudioManager.Stop("Frying");
+                        break;
+                    case FurnitureType.SeasonTable:
+                        Audio.AudioManager.Stop("Salt");
+                        break;
+                }
+
                 actor.SetWorking(false);
                 actor.chefState = ChefState.Idle;
                 furnitureToInteractWith.isUsed = false;

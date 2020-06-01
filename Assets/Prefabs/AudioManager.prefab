@@ -1,0 +1,154 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6258634347681877791
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4298361089985349793}
+  - component: {fileID: 3725278307967689340}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4298361089985349793
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6258634347681877791}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.3095019, y: 2.3572433, z: -0.50610703}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3725278307967689340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6258634347681877791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be7a30cfa4d48da4ebfaa766508b7745, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: FallingSound
+    clip: {fileID: 8300000, guid: 2f8d7092d2becf246b5527ddbefbfd4c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Slap
+    clip: {fileID: 8300000, guid: 24ecddb5d22208b4384f5c4962e84ee4, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: CommandSuceed
+    clip: {fileID: 8300000, guid: 556ac9126c9efe74c8a7782be131f4ee, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: CommandFailed
+    clip: {fileID: 8300000, guid: 13da6fd916aba674d978adee14a60b39, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: CutPotatoes
+    clip: {fileID: 8300000, guid: 44557ec7092916f4fbc8b0470ac60f8a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Frying
+    clip: {fileID: 8300000, guid: 1722b79a61597494e9ee38713cd7f039, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: FallingFemale
+    clip: {fileID: 8300000, guid: 506031bbc83362e48b823941fb1564ad, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: HappyFemale
+    clip: {fileID: 8300000, guid: 1adcda49b65846f4e809b29258b610f9, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ConfusedFemale
+    clip: {fileID: 8300000, guid: 56064cbe1c3641740bc8ff4113c662fc, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: FallingTall
+    clip: {fileID: 8300000, guid: 895ee9d8be984f24687efb5566fb682a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: HappyTall
+    clip: {fileID: 8300000, guid: a98c9960d07ff8b4e85bdfb639374210, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ConfusedTall
+    clip: {fileID: 8300000, guid: e0f9174451b4b6740bab8137ece9bfa0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: FallingBig
+    clip: {fileID: 8300000, guid: 874398ef9ba1c7b48a12c9e69093d1f2, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: HappyBig
+    clip: {fileID: 8300000, guid: 0622e923b0279db45a1e55c1264692c7, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ConfusedBig
+    clip: {fileID: 8300000, guid: 290920e4414d59c4e973e21d97d39582, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: CloseDoor
+    clip: {fileID: 8300000, guid: 0cfc36698f41c7a4f8bcb639ffcabfcc, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: OpenDoor
+    clip: {fileID: 8300000, guid: 7019fe8e725454547b764231d6c143a3, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Salt
+    clip: {fileID: 8300000, guid: 7db15302e1bf5074a980fdf2079af40a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
