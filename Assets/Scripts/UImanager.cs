@@ -8,13 +8,7 @@ public class UImanager : MonoBehaviour
     [Header("Associated objects :")]
     public GameLoop gameLoop;
     public GameManager gameManager;
-    public Canvas uiCanvas;
-    public Image moneyGauge;
-    public Text moneyText;
-    public Image timeGauge;
-    public Text timeText;
-    public Text succesText;
-    public Text failedText;
+
     //Gordon
     public int moodIndex;
     public Image gordonActualImage;

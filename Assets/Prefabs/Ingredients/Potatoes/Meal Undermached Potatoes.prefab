@@ -46,5 +46,6 @@ MonoBehaviour:
   name: Undermached Potatoes
   icon: {fileID: 21300000, guid: 99eb40336f5bf0748abbcd947ebecc3d, type: 3}
   mealQuality: 1
+  mealValue: -10
   recipe: {fileID: 11400000, guid: db95300b145c0f2489d5da8b5f9f518b, type: 2}
   ingredientsInMeal: []

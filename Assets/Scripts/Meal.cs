@@ -6,6 +6,7 @@ public enum MealQuality { Perfect, Failed }
 public class Meal : Ingredient
 {
     public MealQuality mealQuality;
+    public float mealValue;
 
     public Recipe recipe; //Actual recipe of this meal
 
