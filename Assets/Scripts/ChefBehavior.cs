@@ -40,31 +40,14 @@ public class ChefBehavior : AgentBehavior
     private void Update()
     {
         //Go to a furniture
-        if(actor.chefState == ChefState.GoToFurniture && actor.canMove)
+        if (actor.chefState == ChefState.GoToFurniture && actor.canMove)
         {
             destinationSetter.target = targetPoint;
             if (transform.position == targetPoint.position) //Is in front of the furniture
             {
-                
-                //Set up workbench gauge and icon
-                if(furnitureToInteractWith as Workbench != null)
-                {
-                    if(isFailling)
-                    {
-                        (furnitureToInteractWith as Workbench).iconOutputIngredient.sprite = currentStep.wrongIngrdientOutput[0].icon;
-                        (furnitureToInteractWith as Workbench).progressionGauge.color = Color.red;
-                    }
-                    else
-                    {
-                        (furnitureToInteractWith as Workbench).iconOutputIngredient.sprite = currentStep.ingredientOutput.icon;
-                    }
-                    
-                    (furnitureToInteractWith as Workbench).iconOutputIngredient.enabled = true;
-                    (furnitureToInteractWith as Workbench).progressionGauge.enabled = true;
-                }
 
                 //See if the work (only for workbench and for step with potential fail) will success or fail
-                if(furnitureToInteractWith is Workbench && currentStep.wrongIngrdientOutput.Length > 0)
+                if (furnitureToInteractWith is Workbench && currentStep.wrongIngrdientOutput.Length > 0)
                 {
                     int failRatio = Random.Range(0, 100);
                     if (failRatio < failPercentage)
@@ -81,6 +64,23 @@ public class ChefBehavior : AgentBehavior
                         workingDuration = currentStep.duration;
                         workingTimer = workingDuration;
                     }
+                }
+
+                //Set up workbench gauge and icon
+                if (furnitureToInteractWith as Workbench != null && furnitureToInteractWith.furnitureType != FurnitureType.Trash)
+                {
+                    if (isFailling)
+                    {
+                        (furnitureToInteractWith as Workbench).iconOutputIngredient.sprite = currentStep.wrongIngrdientOutput[0].icon;
+                        (furnitureToInteractWith as Workbench).progressionGauge.color = Color.red;
+                    }
+                    else
+                    {
+                        (furnitureToInteractWith as Workbench).iconOutputIngredient.sprite = currentStep.ingredientOutput.icon;
+                    }
+
+                    (furnitureToInteractWith as Workbench).iconOutputIngredient.enabled = true;
+                    (furnitureToInteractWith as Workbench).progressionGauge.enabled = true;
                 }
 
                 //Play sound
@@ -106,9 +106,9 @@ public class ChefBehavior : AgentBehavior
         }
 
         //Work on a furniture
-        else if(actor.chefState == ChefState.Working)
+        else if (actor.chefState == ChefState.Working)
         {
-            if(workingTimer <= 0) //Finish work and go to next step
+            if (workingTimer <= 0) //Finish work and go to next step
             {
                 //Cut sound
                 switch (currentStep.workbenchUsed)
@@ -137,7 +137,7 @@ public class ChefBehavior : AgentBehavior
                 workingTimer = 0;
                 actor.SetHolding(true);
                 //Get new ingredient at the end of this step (fail or succes)
-                if(isFailling)
+                if (isFailling)
                 {
                     carriedIngredient = currentStep.wrongIngrdientOutput[0];
                 }
@@ -145,7 +145,7 @@ public class ChefBehavior : AgentBehavior
                 {
                     carriedIngredient = currentStep.ingredientOutput;
                 }
-                
+
                 ingredientIcon.sprite = carriedIngredient.icon;
                 ingredientIcon.enabled = true;
                 gaugeIcon.enabled = false;
@@ -163,7 +163,7 @@ public class ChefBehavior : AgentBehavior
                 {
                     deliverMeal();
                 }
-                else if(recipeStepIndex < recipeToDo.recipeSteps.Length - 1)
+                else if (recipeStepIndex < recipeToDo.recipeSteps.Length - 1)
                 {
                     recipeStepIndex++;
                     doNextRecipeStep();
@@ -176,7 +176,7 @@ public class ChefBehavior : AgentBehavior
         }
 
         //Go to a delivering chariot
-        else if(actor.chefState == ChefState.Deliver)
+        else if (actor.chefState == ChefState.Deliver)
         {
             destinationSetter.target = targetPoint;
             if (transform.position == targetPoint.position) //Is in front of the furniture
@@ -190,23 +190,49 @@ public class ChefBehavior : AgentBehavior
                 ingredientIcon.enabled = false;
                 gaugeIcon.enabled = false;
                 actor.SetHolding(false);
-                
+
                 //Reset recipe and recipe step
                 recipeToDo = null;
                 recipeStepIndex = 0;
                 currentStep = null;
 
-                if(isFailling)
+                if (isFailling)
                 {
                     isFailling = false;
                 }
-                
+
+                actor.chefState = ChefState.Idle;
+            }
+        }
+
+        //Go to trash a meal
+        else if (actor.chefState == ChefState.TrashMeal)
+        {
+            destinationSetter.target = targetPoint;
+            if (transform.position == targetPoint.position) //Is in front of the furniture
+            {
+                //Remove carried ingredient
+                carriedIngredient = null;
+                ingredientIcon.sprite = null;
+                ingredientIcon.enabled = false;
+                gaugeIcon.enabled = false;
+                actor.SetHolding(false);
+
+                //Reset recipe and recipe step
+                recipeToDo = null;
+                recipeStepIndex = 0;
+                currentStep = null;
+
+                if (isFailling)
+                {
+                    isFailling = false;
+                }
                 actor.chefState = ChefState.Idle;
             }
         }
 
         //Waiting for a furniture to get free
-        else if(actor.chefState == ChefState.Waiting)
+        else if (actor.chefState == ChefState.Waiting)
         {
             if (carriedIngredient is Meal)
             {
@@ -334,7 +360,9 @@ public class ChefBehavior : AgentBehavior
 
     public void trashMeal()
     {
-
+        furnitureToInteractWith = findFurniture(FurnitureType.Trash);
+        targetPoint = furnitureToInteractWith.accessPoint;
+        actor.chefState = ChefState.TrashMeal;
     }
 
     //Find the furniture required to do the current recipe's step, if this step require to find an ingredient, it will be a parameter

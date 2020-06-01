@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ChefState { Idle, Working, GoToFurniture, Waiting, Deliver }
+public enum ChefState { Idle, Working, GoToFurniture, Waiting, Deliver, TrashMeal }
 public class ChefActor : Actor
 {
     public ChefState chefState;
