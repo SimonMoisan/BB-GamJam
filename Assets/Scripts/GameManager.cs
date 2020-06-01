@@ -23,14 +23,9 @@ public class GameManager : MonoBehaviour
     {
         if(cookerSelected != null && cookerSelected.actor.chefState == ChefState.Working)
         {
-            //Calcul new mood
             if(cookerSelected.actualMood > 0)
             {
-                cookerSelected.actualMood -= moodShootPenalty;
-            }
-            else
-            {
-                cookerSelected.actualMood = 0;
+
             }
             
             resetSelection();
