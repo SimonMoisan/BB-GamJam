@@ -3160,7 +3160,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 5.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3184,7 +3184,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.62, y: 2.8, z: -10}
+  m_LocalPosition: {x: 2.62, y: 3.01, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -7975,6 +7975,10 @@ PrefabInstance:
       propertyPath: moodMax
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 744761807, guid: aaed8c857bd502f468676b6d677eb573, type: 3}
+      propertyPath: failPercentage
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 1430868824, guid: aaed8c857bd502f468676b6d677eb573, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.004
@@ -8074,6 +8078,11 @@ PrefabInstance:
         type: 3}
       propertyPath: moodMax
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2502890238000927552, guid: 6d8f56c71d5b2d246b3d53f3eb94cbbd,
+        type: 3}
+      propertyPath: failPercentage
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8340573811227523841, guid: 6d8f56c71d5b2d246b3d53f3eb94cbbd,
         type: 3}
@@ -8288,6 +8297,11 @@ PrefabInstance:
         type: 3}
       propertyPath: moodMax
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8034830842320300487, guid: 9d76634b0c6524e4782c84333ea16d00,
+        type: 3}
+      propertyPath: failPercentage
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8034830842320300491, guid: 9d76634b0c6524e4782c84333ea16d00,
         type: 3}
