@@ -34,6 +34,7 @@ public class Command : MonoBehaviour
         gameLoop.commandsFailed++;
 
         //Reset command slot
+        commandSlot.selector.enabled = false;
         commandSlot.mealIcon.sprite = null;
         commandSlot.mealIcon.enabled = false;
         commandSlot.durationGauge.enabled = false;

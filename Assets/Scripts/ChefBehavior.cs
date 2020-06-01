@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ChefBehavior : AgentBehavior
 {
@@ -10,13 +11,20 @@ public class ChefBehavior : AgentBehavior
     public float workingTimer;
     public bool isFailling;
 
-    [Header("Associated objects :")]
+    [Header("Associated objects chef :")]
     public ChefActor actor;
     public Recipe recipeToDo;
     public RecipeSteps currentStep;
     public int recipeStepIndex;
     public Furniture furnitureToInteractWith;
-    
+    public GameManager gameManager;
+    public Image selector;
+
+    private void Start()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+    }
+
     private void Update()
     {
         //Go to a furniture
@@ -127,6 +135,12 @@ public class ChefBehavior : AgentBehavior
                 ingredientIcon.enabled = false;
                 gaugeIcon.enabled = false;
                 actor.SetHolding(false);
+                
+                //Reset recipe and recipe step
+                recipeToDo = null;
+                recipeStepIndex = 0;
+                currentStep = null;
+                
                 actor.chefState = ChefState.Idle;
             }
         }
@@ -157,6 +171,18 @@ public class ChefBehavior : AgentBehavior
                     actor.chefState = ChefState.GoToFurniture;
                 }
             }
+        }
+
+        //Select agent
+        if(Input.GetMouseButtonDown(0))
+        {
+            gameManager.selectCooker(this);
+        }
+
+        //Drag agent
+        if(Input.GetMouseButtonDown(1))
+        {
+
         }
     }
 

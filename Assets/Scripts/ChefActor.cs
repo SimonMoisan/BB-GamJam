@@ -27,6 +27,6 @@ public class ChefActor : Actor
 
     private void OnMouseDown()
     {
-        gameManager.actorSelecter = this;
+        anim.SetBool("Working", working);
     }
 }

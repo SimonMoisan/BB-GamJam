@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public Actor actorSelecter;
-    public Actor[] agents;
+    public ChefBehavior cookerSelected;
+    public ChefBehavior[] cookers;
     public AgentBehavior[] waiters;
+    public GameLoop gameLoop;
 
-    private void Awake()
+    private void Start()
     {
-        agents = FindObjectsOfType<Actor>();
+        cookers = FindObjectsOfType<ChefBehavior>();
+        gameLoop = FindObjectOfType<GameLoop>();
     }
 
     private void Update()
@@ -20,16 +22,38 @@ public class GameManager : MonoBehaviour
 
     public void shootAction(int actorId)
     {
-        actorSelecter = null;
+        cookerSelected = null;
     }
 
     public void slapeAction(int actorId)
     {
-        actorSelecter = null;
+        cookerSelected = null;
     }
 
     public void stopAction(int actorId)
     {
-        actorSelecter = null;
+        cookerSelected = null;
+    }
+
+    public void selectCooker(ChefBehavior chefSelected)
+    {
+        cookerSelected = chefSelected;
+
+        chefSelected.selector.enabled = true;
+        for (int i = 0; i < cookers.Length; i++)
+        {
+            if(cookers[i] != chefSelected)
+            {
+                cookers[i].selector.enabled = false;
+            }
+        }
+
+        for (int i = 0; i < gameLoop.commandSlots.Length; i++)
+        {
+            if(gameLoop.commandSlots[i].command != null)
+            {
+                gameLoop.commandSlots[i].selector.enabled = true;
+            }
+        }
     }
 }
