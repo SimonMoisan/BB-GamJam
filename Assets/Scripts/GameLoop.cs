@@ -14,7 +14,11 @@ public class GameLoop : MonoBehaviour
     public int[] moneyJalons; //Bronze, Silver, Gold, etc...
     public int commandsSuccesful;
     public int commandsFailed;
-    
+
+    public float changePortraitDuration;
+    public float changerPortraitTimer;
+    public bool portraitIsChanged;
+
 
     [Header("Command parameter :")]
     public Command[] possibleCommands; //Contains prefabs of command
@@ -51,6 +55,16 @@ public class GameLoop : MonoBehaviour
             timerManagement();
         }
         moneyGauge.fillAmount = actualMoney / maxMoney;
+
+        if(changerPortraitTimer <= 0)
+        {
+            portraitIsChanged = false;
+            gordonPortrait.sprite = gordonImages[1];
+        }
+        else
+        {
+            changerPortraitTimer -= Time.deltaTime;
+        }
 
         handcloak.transform.Rotate(new Vector3(0, 0, (-360 / gameDuration) * Time.deltaTime)); 
     }
@@ -135,5 +149,7 @@ public class GameLoop : MonoBehaviour
     public void changePortrait(int idPortrait)
     {
         gordonPortrait.sprite = gordonImages[idPortrait];
+        portraitIsChanged = true;
+        changerPortraitTimer = changePortraitDuration;
     }
 }
