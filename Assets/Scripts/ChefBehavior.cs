@@ -49,7 +49,16 @@ public class ChefBehavior : AgentBehavior
                 //Set up workbench gauge and icon
                 if(furnitureToInteractWith as Workbench != null)
                 {
-                    (furnitureToInteractWith as Workbench).iconOutputIngredient.sprite = currentStep.ingredientOutput.icon;
+                    if(isFailling)
+                    {
+                        (furnitureToInteractWith as Workbench).iconOutputIngredient.sprite = currentStep.wrongIngrdientOutput[0].icon;
+                        (furnitureToInteractWith as Workbench).progressionGauge.color = Color.red;
+                    }
+                    else
+                    {
+                        (furnitureToInteractWith as Workbench).iconOutputIngredient.sprite = currentStep.ingredientOutput.icon;
+                    }
+                    
                     (furnitureToInteractWith as Workbench).iconOutputIngredient.enabled = true;
                     (furnitureToInteractWith as Workbench).progressionGauge.enabled = true;
                 }
@@ -321,6 +330,11 @@ public class ChefBehavior : AgentBehavior
             furnitureToInteractWith.agentUsingFurniture = this;
             actor.chefState = ChefState.Deliver;
         }
+    }
+
+    public void trashMeal()
+    {
+
     }
 
     //Find the furniture required to do the current recipe's step, if this step require to find an ingredient, it will be a parameter

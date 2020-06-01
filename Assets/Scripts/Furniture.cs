@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum FurnitureType { DeepFryer, CuttingTable, SeasonTable, FryPan, Fridge, FoodDisplayer }
+public enum FurnitureType { DeepFryer, CuttingTable, SeasonTable, FryPan, Fridge, FoodDisplayer, Trash }
 public class Furniture : MonoBehaviour
 {
     public bool isUsed;

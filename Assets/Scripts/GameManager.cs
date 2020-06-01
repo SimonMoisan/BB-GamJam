@@ -63,13 +63,22 @@ public class GameManager : MonoBehaviour
 
     public void shootAction()
     {
-        if(cookerSelected != null && cookerSelected.actor.chefState == ChefState.Working)
+        if(cookerSelected != null && (cookerSelected.actor.chefState == ChefState.Working || cookerSelected.actor.chefState == ChefState.GoToFurniture || cookerSelected.actor.chefState == ChefState.Deliver))
         {
             Debug.Log("Shoot");
             //Can do action
             if(cookerSelected.actualMood > 0)
             {
-                cookerSelected.correctBehavior();
+                if(cookerSelected.actor.chefState == ChefState.Working)
+                {
+                    cookerSelected.correctBehavior();
+                }
+                else if(cookerSelected.carriedIngredient is Meal && (cookerSelected.carriedIngredient as Meal).mealQuality == MealQuality.Failed)
+                {
+
+                }
+
+
                 //Remove mood
                 if(cookerSelected.actualMood >= moodShootPenalty)
                 {
