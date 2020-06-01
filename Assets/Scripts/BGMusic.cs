@@ -6,22 +6,9 @@ using Audio;
 public class BGMusic : MonoBehaviour
 {
     public Sound music;
-    private static BGMusic instance;
-    bool mute = false;
 
-    private void Awake()
-    {
-        if (instance != null && instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            instance = this;
-        }
+    public float volume = 0.5f;
 
-        DontDestroyOnLoad(this.gameObject);
-    }
     // Start is called before the first frame update
     void Start()
     {
@@ -33,5 +20,11 @@ public class BGMusic : MonoBehaviour
         music.source.pitch = music.pitch;
 
         music.source.Play();
+    }
+
+    public void OnVolumeChange(float newVolume)
+    {
+        volume = newVolume;
+        music.source.volume = music.volume * volume;
     }
 }

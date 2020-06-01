@@ -7,28 +7,28 @@ namespace Audio {
 
 		public Sound[] sounds;
 		private static List<Sound> staticSounds;
-       
-		void Awake () {
-			staticSounds = new List<Sound>();
+        public float volume = 0.5f;
+        void Awake () {
+            staticSounds = new List<Sound>();
  
 			foreach (Sound s in sounds) {
 				s.source = gameObject.AddComponent<AudioSource>();
 				s.source.clip = s.clip;
  
 				s.source.loop = s.loop;
-				s.source.volume = s.volume;
+				s.source.volume = s.volume * volume;
 				s.source.pitch = s.pitch;
 
  
 				staticSounds.Add(s);
-			}       
-		}
+			}
+        }
 
-        public static void SetVolume(float volume)
+        public static void SetVolume(float newVolume)
         {
             foreach (Sound s in staticSounds)
             {
-                s.source.volume = volume;
+                s.source.volume = newVolume;
             }
         }
 
@@ -53,6 +53,14 @@ namespace Audio {
 			}
 		}
        
+        public static void StopAll()
+        {
+            foreach(Sound s in staticSounds)
+            {
+                s.source.Stop();
+            }
+        }
+
 		public static void Stop(string n) {
 			foreach (Sound s in staticSounds) {
 				if (s.name == n) {
@@ -61,5 +69,14 @@ namespace Audio {
 				}
 			}
 		}
-	}
+
+        public void OnVolumeChange(float newVolume)
+        {
+            volume = newVolume;
+            foreach (Sound s in staticSounds)
+            {
+                s.source.volume = s.volume * newVolume;
+            }
+        }
+    }
 }
