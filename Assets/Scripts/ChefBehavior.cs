@@ -17,7 +17,6 @@ public class ChefBehavior : AgentBehavior
     public int recipeStepIndex;
     public Furniture furnitureToInteractWith;
     
-
     private void Update()
     {
         //Go to a furniture
@@ -208,12 +207,12 @@ public class ChefBehavior : AgentBehavior
                     }
                 }
                 //Case : Find a workbench
-                else if (ingredient == null)
+                else if ((surrondingFurnitures[i] as Workbench) != null && ingredient == null)
                 {
                     return surrondingFurnitures[i];
                 }
                 //Case : Find a frige with the right ingredient
-                else if((surrondingFurnitures[i] as Fridge).ingredient == ingredient)
+                else if(surrondingFurnitures[i].furnitureType == FurnitureType.Fridge && (surrondingFurnitures[i] as Fridge).ingredient == ingredient)
                 {
                     return surrondingFurnitures[i];
                 }
