@@ -96,7 +96,7 @@ public class ChefBehavior : AgentBehavior
                 
                 ingredientIcon.sprite = carriedIngredient.icon;
                 ingredientIcon.enabled = true;
-                gaugeIcon.enabled = true;
+                gaugeIcon.enabled = false;
 
                 //Reset workbench gauge and icon
                 if ((furnitureToInteractWith as Workbench) != null)
