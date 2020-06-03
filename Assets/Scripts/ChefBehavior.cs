@@ -271,6 +271,7 @@ public class ChefBehavior : AgentBehavior
 
     private void OnMouseDown()
     {
+        Debug.Log("Click");
         gameManager.selectCooker(this);
     }
 

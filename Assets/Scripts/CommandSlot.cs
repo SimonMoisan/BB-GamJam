@@ -34,6 +34,7 @@ public class CommandSlot : MonoBehaviour
 
     public void attributeCommand()
     {
+        Debug.Log("Button clicked");
         if(command != null && gameManager.cookerSelected != null && gameManager.cookerSelected.recipeToDo == null)
         {
             gameManager.cookerSelected.addNewRecipe(command.recipe);

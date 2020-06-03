@@ -180,7 +180,7 @@ RectTransform:
   - {fileID: 382306784744374703}
   - {fileID: 1750121968}
   m_Father: {fileID: 8340573811227523852}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -247,6 +247,53 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &2461110659140411587
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1488951401771353899}
+  - component: {fileID: 2352938056051152797}
+  m_Layer: 0
+  m_Name: Ingame collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1488951401771353899
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2461110659140411587}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8340573811227523852}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &2352938056051152797
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2461110659140411587}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.000000030093382, y: -0.2524416}
+  m_Size: {x: 1.0496105, y: 0.6287669}
+  m_Direction: 1
 --- !u!1 &2739133859685922211
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,7 +384,6 @@ GameObject:
   - component: {fileID: 2502890238000927552}
   - component: {fileID: 8319867418677125918}
   - component: {fileID: 854485535}
-  - component: {fileID: 1112259615}
   m_Layer: 0
   m_Name: FemaleChef
   m_TagString: Untagged
@@ -356,6 +402,7 @@ Transform:
   m_LocalPosition: {x: 11.341635, y: -1.2465445, z: 0}
   m_LocalScale: {x: 0.3273167, y: 0.3273167, z: 0.3273167}
   m_Children:
+  - {fileID: 1488951401771353899}
   - {fileID: 3844844067686832984}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -528,9 +575,12 @@ MonoBehaviour:
   failPercentage: 0
   workingDuration: 0
   workingTimer: 0
-  isFailling: 0
   moodMax: 0
   actualMood: 0
+  positionBeforeDrag: {x: 0, y: 0, z: 0}
+  dragOffset: {x: 0, y: 0}
+  isFailling: 0
+  isDragged: 0
   actor: {fileID: 8319867418677125918}
   recipeToDo: {fileID: 0}
   currentStep: {fileID: 0}
@@ -538,6 +588,9 @@ MonoBehaviour:
   furnitureToInteractWith: {fileID: 0}
   gameManager: {fileID: 0}
   selector: {fileID: 1750121966}
+  moodGauge: {fileID: 0}
+  camera: {fileID: 0}
+  surrondingFurnitures: []
 --- !u!114 &8319867418677125918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -576,19 +629,3 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 1.65}
   m_Size: {x: 4.9999995, y: 4.9999995}
   m_Direction: 0
---- !u!58 &1112259615
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8340573811227523841}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.36}
-  serializedVersion: 2
-  m_Radius: 1
