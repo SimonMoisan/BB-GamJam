@@ -3380,6 +3380,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: enableDragMode
       objectReference: {fileID: 0}
+    - target: {fileID: 6602879565980606887, guid: 93f1df61a501f9d41b316b87f3b7529b,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7262055907408442954, guid: 93f1df61a501f9d41b316b87f3b7529b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
